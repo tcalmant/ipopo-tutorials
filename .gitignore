@@ -1,0 +1,53 @@
+# LaTex
+*.aux
+*.log
+*.nav
+*.out
+*.pdf
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.bak
+*.bbl
+*.blg
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+
+# IDE
+.settings/
+.idea/
+.project
+.classpath
+
+# Python build
+build/
+dist/
+*.egg-info/
+target/
+
+# Binaries
+*.tar.gz
+*.zip
+
+# Databases
+*.db
+*.rdb
+*.lock
+*.tmp
+
+# Tests and coverage
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Profiling
+*.lprof
+
+# IPython notebooks
+*.ipynb
+.ipynb_checkpoints/
