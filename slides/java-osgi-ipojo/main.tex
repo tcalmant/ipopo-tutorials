@@ -1,0 +1,63 @@
+\documentclass{beamer}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{times}
+\usepackage{listings}
+
+\usetikzlibrary{arrows,positioning}
+
+\usetheme{Madrid}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\lstset{language=Python, basicstyle=\footnotesize\ttfamily}
+
+\title[OSGi, iPOJO]{OSGi Concepts \& iPOJO Components}
+\author{Thomas Calmant}
+\date{}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
+
+\begin{document}
+\titlegraphic{
+	\includegraphics[width=.3\textwidth]{../imgs/ipojo_logo}
+}
+\frame{\titlepage}
+\frame{\frametitle{Agenda}\tableofcontents}
+
+%----------------------------------------
+% OSGi
+%----------------------------------------
+\section{OSGi}
+\input{osgi.tex}
+
+%----------------------------------------
+% iPOJO
+%----------------------------------------
+\section{iPOJO}
+\input{ipojo.tex}
+
+%----------------------------------------
+% Questions
+%----------------------------------------
+\begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}Questions ?\par%
+  \end{beamercolorbox}
+  \vspace{3ex}
+  \includegraphics[width=.5\textwidth]{../imgs/questions_fry}
+  \vfill
+\end{frame}
+\end{document}
