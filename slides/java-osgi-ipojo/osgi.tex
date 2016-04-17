@@ -116,6 +116,29 @@ Knopflerfish & Makewave\\
 \includegraphics[height=.8\textheight]{../imgs/bundle}
 \end{frame}
 
+\begin{frame}{OSGi Bundle Manifest}
+\begin{block}{Common Manifest Entries}
+\begin{center}
+\begin{tabular}{rp{.6\textwidth}}
+Bundle-SymbolicName & Identifier of the bundle\\
+Bundle-Version & Normalized version number \par (\textit{major.minor.micro-qualifier})\\
+Import-Package & List of required packages, with a version\\
+Export-Package & List of provided packages, with a version\\
+\end{tabular}
+\end{center}
+\end{block}
+
+\begin{block}{Optional Entries}
+\begin{center}
+\begin{tabular}{rp{.6\textwidth}}
+Bundle-Name & Human-readable name\\
+Bundle-Description & Long description\\
+Bundle-Vendor & Name of the bundle provider\\
+\end{tabular}
+\end{center}
+\end{block}
+\end{frame}
+
 \begin{frame}{OSGi Bundle Life Cycle}
 \centering
 
