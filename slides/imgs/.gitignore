@@ -1,0 +1,3 @@
+# Allow to track .pdf files in this folder,
+# as it is the format used for pdflatex images
+!*.pdf
