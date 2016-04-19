@@ -1,0 +1,66 @@
+\begin{frame}{Provided modules}
+\begin{exampleblock}{Note}
+All those modules are in the \texttt{pelix.remote} package.
+\end{exampleblock}
+
+\begin{block}{Core modules}
+\begin{tabular}{rp{.8\textwidth}}
+\texttt{beans} & Defines the Endpoints description classes \\
+\texttt{dispatcher} & Handles the export endpoints \\
+\texttt{registry} & Handles the discovered endpoints \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Miscellaneous modules}
+\begin{tabular}{rp{.7\textwidth}}
+\texttt{edef\_io} & Parser and writer of the EDEF format \par (OSGi standard endpoint exchange format) \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Discovery modules}
+\begin{exampleblock}{Note}
+All those modules are in the \texttt{pelix.remote.discovery} package.
+\end{exampleblock}
+
+\begin{block}{Standard library-based modules}
+\begin{tabular}{rp{.8\textwidth}}
+\texttt{multicast} & Multicast heartbeats (discovery and notifications) \par Uses HTTP \& JSON to retrieve endpoint descriptions \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Third-party based modules}
+\begin{tabular}{rp{.8\textwidth}}
+\texttt{mdns} & Zeroconf/mDNS based discovery and notifications \par Depends on \texttt{pyzeroconf} \\
+\texttt{mqtt} & EDEF over MQTT (discovery and notifications) \par Depends on \texttt{paho-mqtt} \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{Transport modules}
+
+\begin{exampleblock}{Note}
+\begin{small}
+Those modules can be found in the \texttt{pelix.remote} and \texttt{pelix.remote.transport} packages.
+\end{small}
+\end{exampleblock}
+
+\begin{block}{Standard library-based modules}
+\begin{small}
+\begin{tabular}{rp{.8\textwidth}}
+\texttt{xml\_rpc} & XML-RPC import and export endpoints \\
+\end{tabular}
+\end{small}
+\end{block}
+
+\begin{block}{Third-party based modules}
+\begin{small}
+\begin{tabular}{rp{.7\textwidth}}
+\texttt{json\_rpc} & JSON-RPC import and export endpoints \par Depends on \texttt{jsonrpclib-pelix} \\
+\texttt{jabsorb\_rpc} & JSON-RPC extension, with Java types information \par Depends on \texttt{jsonrpclib-pelix} \\
+\texttt{mqtt\_rpc} & Minimalist JSON-RPC over MQTT \par Depends on \texttt{paho-mqtt} \\
+\end{tabular}
+\end{small}
+\end{block}
+\end{frame}

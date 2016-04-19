@@ -1,0 +1,42 @@
+\begin{frame}{Remote Services Services}
+\begin{exampleblock}{Note}
+All services names are declared in \texttt{pelix.remote}
+\end{exampleblock}
+
+\begin{block}{Core Services}
+\begin{small}
+\begin{tabular}{rp{.55\textwidth}}
+\texttt{\scriptsize SERVICE\_DISPATCHER} & Read-only access to the list of export endpoints \\
+\texttt{\scriptsize SERVICE\_DISPATCHER\_SERVLET} & Utility methods for HTTP-based discovery \\
+\texttt{\scriptsize SERVICE\_REGISTRY} & Write-only access to the list of import endpoints \\
+\end{tabular}
+\end{small}
+\end{block}
+
+\begin{block}{Import/Export Services}
+\begin{small}
+\begin{tabular}{rp{.45\textwidth}}
+\texttt{\scriptsize SERVICE\_EXPORT\_PROVIDER} & Notified by the dispatcher to create export endpoints \\
+\texttt{\scriptsize SERVICE\_EXPORT\_ENDPOINT\_LISTENER} & Notified of new export endpoints \\
+\texttt{\scriptsize SERVICE\_IMPORT\_ENDPOINT\_LISTENER} & Notified of new import endpoints \\
+\end{tabular}
+\end{small}
+\end{block}
+\end{frame}
+
+\begin{frame}{API: \texttt{SERVICE\_DISPATCHER}}
+\begin{block}{Description}
+\begin{small}
+Service implemented by \texttt{Dispatcher} in the \texttt{dispatcher} module.
+It notifies the exporters for each \texttt{ServiceReference} associated to export properties.
+It then keeps track of the \texttt{ExportEndpoint} created by the exporters.
+\end{small}
+\end{block}
+
+\begin{block}{Public methods}
+\begin{tabular}{p{.3\textwidth} p{.6\textwidth}}
+\texttt{get\_endpoint(uid)} & Returns the \texttt{ExportEndpoint} associated to the given UID \\
+\texttt{get\_endpoints(} \texttt{kind=None, name=None)} & Retrieves all \texttt{ExportEndpoint} matching the given kind and/or name \\
+\end{tabular}
+\end{block}
+\end{frame}
