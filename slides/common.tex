@@ -1,0 +1,27 @@
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{times}
+\usepackage{listings}
+
+\usetikzlibrary{arrows,positioning}
+
+\usetheme{Madrid}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+\lstset{language=Python, basicstyle=\footnotesize\ttfamily}
+
+\author{Thomas Calmant}
+\date{}
+
+\AtBeginSection[]{
+  \begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+  \vfill
+  \end{frame}
+}
