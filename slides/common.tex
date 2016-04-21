@@ -1,6 +1,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
+\usepackage{hyperref}
 \usepackage{tikz}
 \usepackage{times}
 \usepackage{listings}
@@ -9,6 +10,14 @@
 
 \usetheme{Madrid}
 \setbeamertemplate{blocks}[rounded][shadow=true]
+
+% Setup hyperref with hypersetup to avoid an "option clash" error
+\hypersetup{
+	% Color URL links in blue, but keep internal links white
+	colorlinks=true,
+	linkcolor=white,
+	urlcolor=blue
+}
 
 \lstset{language=Python, basicstyle=\footnotesize\ttfamily}
 
