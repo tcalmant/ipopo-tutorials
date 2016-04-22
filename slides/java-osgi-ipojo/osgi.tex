@@ -10,8 +10,8 @@
 
 \begin{block}{Service Registry}
 \begin{itemize}
-\item Keeps track of contract providers and consumers
-\item Late binding: at runtime, on demande
+\item Keeps track of contracts between providers and consumers
+\item Late binding: at runtime, on demand
 \end{itemize}
 \end{block}
 \end{frame}
@@ -88,13 +88,13 @@ Service & Object implementing an interface, associated to properties\\
 \begin{frame}{OSGi Ecosystem}
 \begin{block}{Specifications}
 \begin{itemize}
-\item Definition of services behaviours, interfaces and properties
+\item Definition of services behaviors, interfaces and properties
 \item Multiple overlapping specification levels:
 \begin{itemize}
 \item Core: main concepts, framework behavior and core services
 \item Compendium: additional core services (log service, remote services, \ldots)
 \item Enterprise: additional services (security management, \ldots)
-\item Redidential: services for IoT and Home Automation
+\item Residential: services for IoT and Home Automation
 \end{itemize}
 \end{itemize}
 \end{block}
@@ -217,7 +217,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 \end{frame}
 
 
-\begin{frame}[fragile]{Snippets: Un/register a service}
+\begin{frame}[fragile]{Snippets: (Un)register a service}
 \begin{small}
 \begin{block}{Register a service}
 \begin{minted}{java}
