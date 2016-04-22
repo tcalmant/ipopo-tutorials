@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="355.84818"
+   height="180.05901"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="cbse_component.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient5328">
+      <stop
+         style="stop-color:#44c576;stop-opacity:1;"
+         offset="0"
+         id="stop5330" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1"
+         id="stop5332" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient5249"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#1e9700;stop-opacity:1;"
+         offset="0"
+         id="stop5251" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3961-2">
+      <stop
+         style="stop-color:#d277dd;stop-opacity:1;"
+         offset="0"
+         id="stop3963-7" />
+      <stop
+         style="stop-color:#f2d8f5;stop-opacity:0.66666669;"
+         offset="1"
+         id="stop3965-1" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient3961">
+      <stop
+         style="stop-color:#d277dd;stop-opacity:1;"
+         offset="0"
+         id="stop3963" />
+      <stop
+         style="stop-color:#f2d8f5;stop-opacity:0.66666669;"
+         offset="1"
+         id="stop3965" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5328"
+       id="linearGradient6305"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.96958375,0,0,0.87541329,48.882328,212.8256)"
+       x1="250.01784"
+       y1="207.62212"
+       x2="250.01784"
+       y2="153.5166" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3961-2"
+       id="linearGradient6307"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(105.81196,-465.19841)"
+       x1="341.07397"
+       y1="856.36816"
+       x2="341.90796"
+       y2="802.15131" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3961"
+       id="linearGradient6309"
+       gradientUnits="userSpaceOnUse"
+       x1="373.83823"
+       y1="418.55884"
+       x2="373.27942"
+       y2="349.97058" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="158.94392"
+     inkscape:cy="68.898101"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="1912"
+     inkscape:window-y="22"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-116.43754,-281.58892)">
+    <rect
+       style="fill:#729fcf;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect2985"
+       width="199.1748"
+       height="139.1748"
+       x="192.68266"
+       y="302.00153"
+       ry="15.797647" />
+    <g
+       id="g5613"
+       transform="translate(-15.48237,3.3106974)">
+      <rect
+         height="4"
+         y="366.27823"
+         x="407.75244"
+         width="30"
+         id="rect3119-1-5"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3971"
+         d="m 459.41398,346.12198 c -12.02799,0 -21.8125,9.93281 -21.8125,22.15625 0,12.22345 9.78451,22.15625 21.8125,22.15625 l 0,-7.28125 c -7.41165,-0.91136 -13.15625,-7.21695 -13.15625,-14.875 0,-7.65805 5.7446,-13.96364 13.15625,-14.875 l 0,-7.28125 z"
+         style="fill:url(#linearGradient6307);fill-opacity:1;fill-rule:nonzero;stroke:#e2a8e9;stroke-width:0.7082206;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+    <g
+       id="g5609"
+       transform="translate(3.871541,3.3106986)">
+      <rect
+         height="4"
+         y="366.27823"
+         x="158.39853"
+         width="30"
+         id="rect3119-1"
+         style="fill:#000000;fill-opacity:1;stroke:none" />
+      <ellipse
+         ry="26.5"
+         rx="27"
+         cy="390.5"
+         cx="372"
+         transform="matrix(0.64150943,0,0,0.64150943,-97.811202,117.7688)"
+         id="path3931"
+         style="fill:url(#linearGradient6309);fill-opacity:1;fill-rule:nonzero;stroke:#e2a8e9;stroke-width:1.55882359;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.61344528px;line-height:125%;font-family:Sans;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
+       x="258.60538"
+       y="351.35037"
+       id="text5817-4-7-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5819-8-0-8"
+         x="258.60538"
+         y="351.35037">Container</tspan></text>
+    <g
+       id="g3501"
+       transform="translate(-7.6293945e-6,19.372643)">
+      <rect
+         y="347.04959"
+         x="222.73071"
+         height="49.078705"
+         width="139.0787"
+         id="rect5318"
+         style="fill:url(#linearGradient6305);fill-opacity:1;stroke:#000000;stroke-width:0.92129612;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5817-4-3"
+         y="376.66406"
+         x="237.32439"
+         style="font-style:normal;font-weight:normal;font-size:13.61344528px;line-height:125%;font-family:Sans;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="376.66406"
+           x="237.32439"
+           id="tspan5819-8-9"
+           sodipodi:role="line">Functional Code</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.61344528px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="443.21091"
+       y="325.86899"
+       id="text6061-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan6063-2"
+         x="443.21091"
+         y="325.86899">Required</tspan><tspan
+         sodipodi:role="line"
+         x="443.21091"
+         y="342.8858"
+         id="tspan3575">Service</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:13.61344528px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="144.65486"
+       y="330.87936"
+       id="text5817-4-4-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5819-8-8-0"
+         x="144.65486"
+         y="330.87936">Provided</tspan><tspan
+         sodipodi:role="line"
+         x="144.65486"
+         y="347.89618"
+         id="tspan3577">Service</tspan></text>
+    <g
+       id="g3529">
+      <rect
+         ry="0"
+         y="282.00763"
+         x="242.68877"
+         height="39.162582"
+         width="99.162582"
+         id="rect2987"
+         style="fill:#ffc36d;fill-opacity:1;stroke:#000000;stroke-width:0.83741874;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5817-0-0"
+         y="300.80444"
+         x="292.27188"
+         style="font-style:normal;font-weight:normal;font-size:13.61344528px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="300.80444"
+           x="292.27188"
+           id="tspan5819-89-0"
+           sodipodi:role="line">Handler</tspan><tspan
+           style="font-size:7.5px"
+           id="tspan3506-3"
+           y="311.72769"
+           x="292.27188"
+           sodipodi:role="line">(Extra-Functional Code)</tspan></text>
+    </g>
+    <g
+       transform="translate(0,140.059)"
+       id="g3529-5">
+      <rect
+         ry="0"
+         y="282.00763"
+         x="242.68877"
+         height="39.162582"
+         width="99.162582"
+         id="rect2987-2"
+         style="fill:#ffc36d;fill-opacity:1;stroke:#000000;stroke-width:0.83741874;stroke-opacity:1" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text5817-0-0-8"
+         y="300.80444"
+         x="292.27188"
+         style="font-style:normal;font-weight:normal;font-size:13.61344528px;line-height:125%;font-family:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           y="300.80444"
+           x="292.27188"
+           id="tspan5819-89-0-0"
+           sodipodi:role="line">Handler</tspan><tspan
+           style="font-size:7.5px"
+           id="tspan3506-3-4"
+           y="311.72769"
+           x="292.27188"
+           sodipodi:role="line">(Extra-Functional Code)</tspan></text>
+    </g>
+  </g>
+</svg>
