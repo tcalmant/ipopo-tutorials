@@ -1,6 +1,6 @@
 \subsection{Service-Oriented Component Model}
 
-\begin{frame}{iPOJO: A SOCM in Java}
+\begin{frame}{iPOJO: Service-Oriented Component Model in Java}
 \begin{block}{iPOJO Concepts}
 \begin{tabular}{lp{.7\textwidth}}
 Component & Instance of a \textit{Factory} class\\
@@ -69,12 +69,12 @@ Handler & Manages a component according to information in its Factory\\
 
 \subsection{Code Snippets}
 
-\begin{frame}[fragile]{Snippet: Sample Component}
+\begin{frame}[fragile]{Snippet: Sample Provider}
 \begin{block}{Hello world sample}
 \begin{minted}{java}
-@Component(name="my-factory"}
+@Component(name="my-provider"}
 @Provides(specification=MyInterface.class)
-@Instantiate(name="my-instance")
+@Instantiate(name="my-provider-instance")
 public class MyImplementation implements MyInterface {
 
 	@Requires(optional=true)
@@ -86,6 +86,58 @@ public class MyImplementation implements MyInterface {
 			"Said hello to " + name);
 	}
 }
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Snippet: Sample Consumer}
+\begin{block}{Hello world sample}
+\begin{minted}{java}
+@Component(name="my-consumer"}
+@Instantiate(name="my-consumer-instance")
+public class MyConsumer {
+	@Requires
+	private MyInterface service;
+	
+	@Property(name = "my.name", value = "World")
+	private String name;
+	
+	@Validate
+	public void validated() {
+		System.out.println("Consumer validated!");
+		service.hello(name);
+	}
+	
+	@Invalidate
+	public void validated() {
+		System.out.println("Consumer invalidated!");
+		service.hello("the end");
+	}
+}
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Snippet: Result}
+\begin{block}{Hello world sample}
+\begin{minted}{bash}
+$ install file:ipojo.jar
+Bundle ID 5
+$ start 5
+
+$ install file:consumer.jar
+Bundle ID 6
+$ start 6
+
+$ install file:provider.jar
+Bundle ID 7
+$ start 7
+Consumer validated!
+Hello, World!
+
+$ stop 7
+Consumer invalidated!
+Hello, the end!
 \end{minted}
 \end{block}
 \end{frame}
