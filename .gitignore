@@ -11,6 +11,8 @@
 *.bak
 *.bbl
 *.blg
+*.dvi
+_minted-*
 
 # Python
 *.pyc
