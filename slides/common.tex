@@ -15,6 +15,17 @@
 
 \usetikzlibrary{arrows,positioning}
 
+% Animations in TikZ
+% From: http://tex.stackexchange.com/questions/136143/tikz-animated-figure-in-beamer
+\tikzset{
+  invisible/.style={opacity=0},
+  visible on/.style={alt={#1{}{invisible}}},
+  alt/.code args={<#1>#2#3}{%
+  	% \pgfkeysalso doesn't change the path
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}
+  },
+}
+
 \usetheme{boadilla}
 \setbeamertemplate{blocks}[rounded][shadow=true]
 

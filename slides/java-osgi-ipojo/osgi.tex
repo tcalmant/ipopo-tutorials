@@ -39,17 +39,23 @@
 }
 
 \begin{tikzpicture}
-\node[punkt] (R) at (4, 4) {Service Registry};
-\node[punkt, blue] (C) at (0, 0) {Service Consumer};
-\node[punkt, red] (P) at (8, 0) {Service Provider};
+\node[punkt, visible on=<1->] (R) at (4, 4) {Service Registry};
 
-\draw[pil, bend right=45]
+\node[punkt, blue, visible on=<2->] (C) at (0, 0) {Service Consumer};
+\draw[very thick, blue, visible on=<2->] (1.6, 0) to (C.east);
+\draw[very thick, blue, visible on=<2->] (2, .4) arc (90:270:.4);
+
+\node[punkt, red, visible on=<4->] (P) at (8, 0) {Service Provider};
+\draw[very thick, red, visible on=<4->] (6, 0) to (P.west);
+\filldraw[very thick, red, visible on=<4->] (6, 0) circle (.4);
+
+\draw[pil, bend right=45, visible on=<5-6>]
     (P.north) to node[auto, swap] {\texttt{Provides}}(R.east);
-\draw[pil, <->, bend left=45]
+\draw[pil, ->, bend left=45, visible on=<3>]
     (C.north) to node[auto] {\texttt{Looks up}}(R.west);
-\draw[pil, -] (C.east) to node[auto] {\texttt{Binds \& Uses}}(P.west);
-\draw[very thick, blue] (2, .4) arc (90:270:2ex);
-\filldraw[very thick, red] (6, 0) circle (2ex);
+\draw[pil, <-, bend left=45, visible on=<6>]
+    (C.north) to node[auto] {\texttt{Notifies}}(R.west);
+\draw[pil, -, visible on=<7->] (1.6, 0) to node[auto] {\texttt{Binds \& Uses}}(5.6, 0);
 \end{tikzpicture}
 \end{center}
 \end{frame}
