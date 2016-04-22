@@ -183,3 +183,92 @@ Bundle-Vendor & Name of the bundle provider\\
 \draw[pil] (uninstalled.south) to node[auto] {} (final.north);
 \end{tikzpicture}
 \end{frame}
+
+
+\subsection{Code Snippets}
+
+\begin{frame}[fragile]{Snippets: Bundle Activator}
+\begin{small}
+\begin{block}{mypackage/MyActivator.java}
+\begin{minted}{java}
+public class MyActivator implements BundleActivator {
+	public void start(BundleContext ctxt) {
+		System.out.println("Bundle Started");
+	}
+	public void stop(BundleContext ctxt) {
+		System.out.println("Bundle Stopped");
+	}
+}
+\end{minted}
+\vspace{-.8em}
+\end{block}
+\begin{block}{META-INF/MANIFEST.MF}
+\begin{minted}{yaml}
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: net.coderxpress.snippets.activator
+Bundle-Version: 1.0.0
+Bundle-Activator: mypackage.MyActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+\end{minted}
+\vspace{-.8em}
+\end{block}
+\end{small}
+\end{frame}
+
+
+\begin{frame}[fragile]{Snippets: Un/register a service}
+\begin{small}
+\begin{block}{Register a service}
+\begin{minted}{java}
+// Instantiate the service object
+MyInterface service = new MyImplementation();
+
+// Set up properties
+Hashtable properties = new Hashtable();
+properties.put("answer", 42);
+
+// Register the service
+ServiceRegistration<MyInterface> svcReg = ctxt.registerService(
+	MyInterface.class, service, properties);
+\end{minted}
+\vspace{-.8em}
+\end{block}
+
+\begin{block}{Unregister a service}
+\begin{minted}{java}
+// Unregister the service
+svcReg.unregister();
+\end{minted}
+\vspace{-.8em}
+\end{block}
+\end{small}
+\end{frame}
+
+\begin{frame}[fragile]{Snippets: Consume a service}
+\begin{small}
+\begin{block}{Find a Service}
+\begin{minted}{java}
+// Find the first service matching an interface and/or properties
+svcRef = ctxt.getServiceReference(
+	MyInterface.class.getName(), "(answer=42)");
+\end{minted}
+\vspace{-.8em}
+\end{block}
+
+\begin{block}{Consume a Service}
+\begin{minted}{java}
+// Get the service
+MyInterface service = ctxt.getService(svcRef);
+
+// Use it
+service.hello("world");
+
+// Release it
+ctxt.ungetService(svcRef);
+service = null;
+\end{minted}
+\vspace{-.8em}
+\end{block}
+\end{small}
+\end{frame}
