@@ -1,0 +1,165 @@
+\begin{frame}{Pelix: Concepts}
+
+\begin{block}{Services}
+\begin{itemize}
+\item Same concept as in OSGi:\\
+an object implementing interfaces, associated to properties
+\item Pelix supports:
+\begin{itemize}
+\item Multiple interfaces services
+\item Service ordering (\texttt{service.ranking})
+\item Service filtering (with LDAP filters)
+\end{itemize}
+\item \texttt{ServiceRegistration} vs. \texttt{ServiceReference}
+\end{itemize}
+\end{block}
+
+\begin{block}{Bundles}
+\begin{itemize}
+\item Bundle = single Python module
+\begin{itemize}
+\item Standard \texttt{.py}/\texttt{.pyc}/\texttt{.pyo} file
+\item Native modules (\texttt{.pyd})
+\end{itemize}
+\item Support of the Bundle Activator
+\item \texttt{Bundle} vs. \texttt{BundleContext}
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Pelix Bundle Life Cycle}
+\begin{exampleblock}{Note}
+In Pelix, \texttt{INSTALLED} is just a step state.
+\end{exampleblock}
+
+\centering
+\tikzset{
+    %Define standard arrow tip
+    >=stealth',
+    %Define style for boxes
+    punkt/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           fill=yellow!30,
+           text width=6.5em,
+           minimum height=2em,
+           text centered},
+    % Define arrow style
+    pil/.style={
+           ->,
+           thick,
+           shorten <=2pt,
+           shorten >=2pt,}
+}
+
+\begin{tikzpicture}[node distance=2.3em, auto]
+\node[circle, draw, very thick, fill=yellow!30] (init) {};
+\node[punkt, below=of init] (installed) {INSTALLED};
+\node[punkt, below=of installed] (resolved) {RESOLVED};
+\node[punkt, below=of resolved] (uninstalled) {UNINSTALLED};
+\node[punkt, right=of installed] (starting) {STARTING};
+\node[punkt, right=of resolved] (active) {ACTIVE};
+\node[punkt, right=of uninstalled] (stopping) {STOPPING};
+\node[circle, draw, very thick, fill=black, below=of uninstalled] (final) {};
+
+\draw[pil] (init.south) to node[auto, swap] {Install} (installed.north);
+\draw[pil] (installed.south) to node[auto] {} (resolved.north);
+\draw[pil] (resolved.east) to node[auto] {Start} (starting.west);
+\draw[pil] (starting.south) to node[auto] {} (active.north);
+\draw[pil] (active.south) to node[auto] {Stop} (stopping.north);
+\draw[pil] (stopping.west) to node[auto] {} (resolved.east);
+\draw[pil] (resolved.south) to node[auto, swap] {Uninstall} (uninstalled.north);
+\draw[pil, bend right=35] (resolved.west) to node[auto] {} (uninstalled.west);
+\draw[pil] (uninstalled.south) to node[auto] {} (final.north);
+\end{tikzpicture}
+\end{frame}
+
+
+\subsection{Snippets}
+
+\begin{frame}[fragile]{Pelix API: Framework life cycle}
+\begin{block}{Create a framework}
+\begin{minted}{python}
+from pelix.framework import FrameworkFactory, create_framework
+
+# With FrameworkFactory
+framework = FrameworkFactory.get_framework({"foo": "bar"})
+framework.get_bundle_context().install_bundle('pelix.ipopo.core')
+framework.start()
+
+# With create_framework
+framework = create_framework(['pelix.ipopo.core'], {"foo": "bar"})
+framework.start()
+\end{minted}
+\end{block}
+
+\begin{block}{Stop a framework}
+\begin{minted}{python}
+# Stop the framework
+framework.stop()
+
+# Delete it
+FrameworkFactory.delete_framework(framework)
+framework = None
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Pelix API: Services}
+\begin{block}{Register a service}
+\vspace{-.5em}
+\begin{columns}
+\begin{column}[b]{.45\textwidth}
+\begin{minted}{python}
+# Service object
+service = MyImplementation()
+
+# Register the service
+svc_reg = ctxt.register_service(
+    "my.interface", service,
+    {"answer": 42}
+\end{minted}
+\end{column}
+
+\begin{column}{.5\textwidth}
+\begin{minted}{java}
+// Instantiate the service object
+MyInterface service = 
+	new MyImplementation();
+
+// Set up properties
+Hashtable properties =
+		new Hashtable();
+properties.put("answer", 42);
+
+// Register the service
+ServiceRegistration<?> svcReg = 
+  ctxt.registerService(
+    MyInterface.class, service,
+    properties);
+\end{minted}
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{block}{Unregister a service}
+\vspace{-.5em}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\begin{minted}{python}
+# Unregister the service
+svc_reg.unregister();
+\end{minted}
+\end{column}
+
+\begin{column}{.5\textwidth}
+\begin{minted}{java}
+// Unregister the service
+svcReg.unregister();
+\end{minted}
+\end{column}
+\end{columns}
+\end{block}
+\end{frame}

@@ -1,0 +1,92 @@
+\begin{frame}{iPOPO Project History}
+\begin{block}{Parent project: Cohorte}
+\begin{itemize}
+\item Development \& Runtime Framework for seamless isolation of OSGi bundles and components
+\item Target: OSGi applications
+\item Implementation languages: Python (main), Java
+\end{itemize}
+\end{block}
+
+\begin{block}{Requirements}
+\begin{itemize}
+\item Access to low-level methods (\texttt{getpid()}, \texttt{setuid()}, \ldots)
+\item Real concept of processes
+\item Close to the APIs and concepts known by OSGi/iPOJO developers
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{iPOPO Project History}
+\begin{block}{2 Projects in 1}
+\begin{columns}
+\begin{column}{.5\textwidth}
+\vspace{-1em}
+\begin{center}
+\textbf{Pelix}
+\vspace{-1em}
+\end{center}
+\begin{itemize}
+\item OSGi Core Concepts
+\item Service Registry
+\item Bundle management
+\end{itemize}
+\end{column}
+
+\begin{column}{.5\textwidth}
+\vspace{-1em}
+\begin{center}
+\textbf{iPOPO}
+\vspace{-1em}
+\end{center}
+\begin{itemize}
+\item iPOJO-like concepts
+\item Factory class manipulation \\ (by decorators)
+\end{itemize}
+\end{column}
+\end{columns}
+\end{block}
+
+\begin{block}{Required Features}
+\begin{columns}
+\begin{column}{.65\textwidth}
+\begin{itemize}
+\item At-runtime bundle installation and update
+\item No external dependencies
+\item Low memory usage
+\end{itemize}
+\end{column}
+
+\begin{column}{.4\textwidth}
+\begin{itemize}
+\item Easy to maintain
+\item Console UI (shell)
+\item Remote Services
+\end{itemize}
+\end{column}
+\end{columns}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{iPOPO Project History}
+\begin{block}{Versions History}
+\centering
+\begin{small}
+\begin{table}
+\begin{tabular}{@{\,}r <{\hskip 2pt} !{\timeline{blue}} >{\raggedright\arraybackslash}p{.5\textwidth}}
+\addlinespace[1.5ex]
+\formatdate{20}{12}{2011} & \texttt{python.injections} \\
+\formatdate{20}{01}{2012} & v0.1: First Commit of iPOPO \\
+\formatdate{07}{02}{2012} & v0.2 \\
+\formatdate{13}{04}{2012} & v0.3: Public Release \\
+\formatdate{21}{11}{2012} & v0.4 \\
+\formatdate{20}{05}{2013} & v0.5 \\
+\formatdate{155}{11}{2013} & v0.5.5: iPOPO adopts the Apache Software License 2.0 \\
+\formatdate{20}{03}{2015} & v0.6: End of Python 2.6 support \\
+\formatdate{17}{06}{2015} & v0.6.2: iPOPO is not in \textit{beta} anymore \\
+\formatdate{25}{10}{2015} & v0.6.3: Latest release \\
+\end{tabular}
+\end{table}
+\end{small}
+\end{block}
+\end{frame}
