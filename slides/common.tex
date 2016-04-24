@@ -6,6 +6,17 @@
 \usepackage{tikz}
 \usepackage{times}
 
+% Timelines
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage[short]{datetime}
+
+\newcommand{\timeline}[1]{
+	\color{#1}
+	\makebox[0pt]{\textbullet}\hskip-0.5pt\vrule width 1pt\hspace{\labelsep}
+}
+
+
 % Syntax coloration (better than listings but requires --shell-escape=1
 \usepackage{minted}
 \usemintedstyle{borland}
