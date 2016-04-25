@@ -1,0 +1,19 @@
+install pelix.http.basic
+start $?
+
+install pelix.remote.dispatcher
+start $?
+
+install pelix.remote.registry
+start $?
+
+install pelix.remote.discovery.multicast
+start $?
+
+install pelix.remote.json_rpc
+start $?
+
+instantiate pelix.http.service.basic.factory httpd http.port=0
+instantiate pelix-remote-discovery-multicast-factory pelix-discovery-multicast
+instantiate pelix-jsonrpc-exporter-factory jsonrpc-exporter
+instantiate pelix-jsonrpc-importer-factory jsonrpc-importer
