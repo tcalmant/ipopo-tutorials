@@ -14,6 +14,9 @@ install pelix.remote.json_rpc
 start $?
 
 instantiate pelix.http.service.basic.factory httpd http.port=0
+install pelix-remote-dispatcher-servlet-factory dispatcher-servlet
+
 instantiate pelix-remote-discovery-multicast-factory pelix-discovery-multicast
+
 instantiate pelix-jsonrpc-exporter-factory jsonrpc-exporter
 instantiate pelix-jsonrpc-importer-factory jsonrpc-importer
