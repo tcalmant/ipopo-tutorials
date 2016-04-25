@@ -84,12 +84,12 @@ class MyConsumer:
     @Validate
     def validated(self):
         print("Consumer validated!")
-        service.hello(name)
+        self.service.hello(name)
 	
     @Invalidate
     def invalidated(self):
         print("Consumer invalidated!")
-        service.hello("the end")
+        self.service.hello("the end")
 \end{minted}
 \end{block}
 \end{frame}
