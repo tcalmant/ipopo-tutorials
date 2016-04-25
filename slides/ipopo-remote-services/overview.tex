@@ -42,6 +42,49 @@ The \texttt{Dispatcher} is notified of a service to be exported (after its regis
 \includegraphics[width=\textwidth]{../imgs/rs_sequence}
 \end{frame}
 
+\begin{frame}{How to export a service?}
+\begin{block}{How it works}
+\begin{enumerate}
+\item Services with export properties are detected by the dispatcher
+\item The dispatcher notifies the export services
+\item Each exporter can create an \texttt{ExportEndpoint}
+\item The dispatcher notifies the discovery services
+\end{enumerate}
+\end{block}
+
+\begin{block}{Export properties}
+\begin{tabular}{rl}
+\texttt{\small service.exported.interfaces} & List of exported interfaces \\
+\hline
+\texttt{\small service.exported.configs} & List of allowed export protocols \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{How is a service imported?}
+\begin{block}{How it works}
+\begin{enumerate}
+\item A discovery service detects a new service
+\item The discovery service notifies the Imports Registry
+\item The ImportRegistry notifies the import services
+\item Each import service can register a proxy as a local service, with import properties
+\end{enumerate}
+\end{block}
+
+\begin{block}{Imported service properties}
+\begin{tabular}{rl}
+\texttt{\small service.imported.interfaces} & List of exported interfaces \\
+\hline
+\texttt{\small service.imported.configs} & List of allowed export protocols \\
+\hline
+\texttt{\small endpoint.framework.uuid} & UUID of the host framework \\
+\hline
+\texttt{\small endpoint.service.id} & Service ID in the host framework \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+
 \begin{frame}{Supported protocols}
 \begin{exampleblock}{Java compatibility}
 A Java implementation of iPOPO Remote Services is available as the \href{https://github.com/isandlaTech/cohorte-remote-services}{Cohorte Remote Services} project.
