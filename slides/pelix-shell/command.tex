@@ -1,0 +1,48 @@
+\begin{frame}{What must be done?}
+\begin{block}{Checklist}
+\begin{itemize}
+\item Create a new module
+\item Import iPOPO decorators
+\item Import Shell constants
+\item Create a Component Factory
+\begin{itemize}
+\item Provide the \texttt{pelix.shell.SERVICE\_SHELL\_COMMAND} service
+\end{itemize}
+\item Implement required methods
+\begin{itemize}
+\item \texttt{get\_namespace()}: Returns the commands name space (\texttt{str})
+\item \texttt{get\_methods()}: Returns a list of couples, associating a command name to a method pointer
+\end{itemize}
+\item Implement custom shell commands
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Skeleton}
+\begin{scriptsize}
+\begin{block}{Basic code}
+\begin{minted}{python}
+#!/usr/bin/python
+# -- Content-Encoding: UTF-8 --
+
+from pelix.ipopo.decorators import ComponentFactory, Requires, \
+    Provides, Instantiate
+import pelix.shell
+
+@ComponentFactory("my-shell-commands-factory")
+@Provides(pelix.shell.SERVICE_SHELL_COMMAND)
+@Instantiate("my-shell-commands")
+class MyCommands(object):
+    def get_namespace(self):
+        return "sample"
+
+    def get_methods(self):
+        return [("hello", self.say_hello),]
+
+    def say_hello(self, session, name=None):
+        """ Command help """
+        session.write_line("Hello, {0} !", name or "World")
+\end{minted}
+\end{block}
+\end{scriptsize}
+\end{frame}

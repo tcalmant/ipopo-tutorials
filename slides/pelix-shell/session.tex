@@ -1,0 +1,74 @@
+\begin{frame}{Concepts}
+\begin{block}{Services}
+\centering
+\begin{tabular}{r p{.65\textwidth}}
+Parser & Reusable basic class to parse and dispatch command \\
+\hline
+Shell Core & Core service, aggregating command services \\
+\hline
+Command Service & Provides commands for a namespace \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Utilities}
+\centering
+\begin{tabular}{r p{.65\textwidth}}
+Session & Represents a user session, with a storage for variables and a I/O Handler \\
+\hline
+I/O Handler & Hides the communications details, implemented by UIs \\
+\end{tabular}
+\end{block}
+\end{frame}
+
+\begin{frame}{Session: API}
+\begin{small}
+\begin{exampleblock}{Note}
+Session beans are created by UIs and given as first parameter of commands
+\end{exampleblock}
+
+\begin{block}{Properties}
+\centering
+\begin{tabular}{rl}
+\texttt{last\_result} & Gets the last non-\texttt{None} command result \\
+\hline
+\texttt{variables} & Returns a copy of session properties \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Methods}
+\begin{center}
+\begin{tabular}{rl}
+\texttt{get({\scriptsize name})} & Gets the value of a variable \\
+\hline
+\texttt{set({\scriptsize name, value})} & Sets a variable \\
+\hline
+\texttt{unset({\scriptsize name})} & Deletes a variable \\
+\end{tabular}
+\end{center}
+The common methods of the underlying I/O Handler are also available.
+\end{block}
+\end{small}
+\end{frame}
+
+
+\begin{frame}{I/O Handler: API}
+\begin{small}
+\begin{exampleblock}{Note}
+I/O Handlers are implemented by Shell UIs and are not directly accessible
+\end{exampleblock}
+
+\begin{block}{Methods}
+\begin{center}
+\begin{tabular}{rl}
+\texttt{write({\scriptsize data})} & Prints data to the user \\
+\hline
+\texttt{write\_line({\scriptsize line, *args, **kwargs})} & Prints a line, using \texttt{format()} \\
+\hline
+\texttt{flush()} & Flushes the output \\
+\hline
+\texttt{prompt({\scriptsize [prompt]})} & Request a line for user \\
+\end{tabular}
+\end{center}
+\end{block}
+\end{small}
+\end{frame}

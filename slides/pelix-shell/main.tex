@@ -1,0 +1,42 @@
+\documentclass[table]{beamer}
+\title[Pelix Shell]{Pelix Shell}
+\input{../common}
+
+\begin{document}
+\titlegraphic{
+\includegraphics[width=.3\textwidth]{../imgs/ipopo_logo}
+}
+\frame{\titlepage}
+
+%----------------------------------------
+% Basic Usage
+%----------------------------------------
+\section{Basic Usage}
+\input{usage.tex}
+
+%----------------------------------------
+% Session & I/O Handler
+%----------------------------------------
+\section{Session \& I/O Handler}
+\input{session.tex}
+
+%----------------------------------------
+% How to write a command
+%----------------------------------------
+\section{How To Write a Command Provider}
+\input{command.tex}
+
+%----------------------------------------
+% Questions
+%----------------------------------------
+\begin{frame}
+  \vfill
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+    \usebeamerfont{title}Questions ?\par%
+  \end{beamercolorbox}
+  \vspace{3ex}
+  \includegraphics[width=.5\textwidth]{../imgs/questions_fry}
+  \vfill
+\end{frame}
+\end{document}

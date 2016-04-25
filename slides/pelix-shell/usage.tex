@@ -1,0 +1,151 @@
+\begin{frame}[fragile]{How to run the Shell}
+\begin{block}{Run a Text UI}
+\begin{minted}{bash}
+user@localhost $ python -m pelix.shell
+** Pelix Shell prompt **
+$
+\end{minted}
+\end{block}
+
+\begin{block}{Run from code}
+\begin{minted}{python}
+# Start the Shell Core bundle
+ctxt.install_bundle('pelix.shell.core').start()
+
+# Install iPOPO commands
+ctxt.install_bundle('pelix.shell.ipopo').start()
+
+# Start the console UI
+ctxt.install_bundle('pelix.shell.console').start()
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}{Basic Commands}
+\begin{small}
+\begin{block}{Survival Kit}
+\centering
+\begin{tabular}{r p{.45\textwidth}}
+\texttt{help {\scriptsize [<command>]}} & Shows the help \\
+\hline
+\texttt{loglevel {\scriptsize [<level>] [<name>]}} & Prints/changes the log level \\
+\hline
+\texttt{exit} & Quits the shell (and the framework in console UI) \\
+\hline
+\texttt{threads} & Prints the stack trace of all threads \\
+\hline
+\texttt{run {\scriptsize <file>}} & Executes the given shell script \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Session Commands}
+\centering
+\begin{tabular}{r l}
+\texttt{set {\scriptsize [<property=value>]}} & Prints/sets session variables \\
+\hline
+\texttt{unset {\scriptsize <name>}} & Deletes a session variable \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Properties Commands}
+\centering
+\begin{tabular}{r l}
+\texttt{properties} & Lists the properties of the framework \\
+\hline
+\texttt{sysprops} & Lists the environment variables \\
+\end{tabular}
+\end{block}
+\end{small}
+\end{frame}
+
+
+\begin{frame}{Basic Commands}
+\begin{small}
+\begin{block}{Bundle Commands}
+\centering
+\begin{tabular}{r l}
+\texttt{install {\scriptsize <name>}} & Installs a module as a bundle \\
+\hline
+\texttt{start {\scriptsize <bundle ID>}} & Starts the given bundle \\
+\hline
+\texttt{update {\scriptsize <bundle ID>}} & Updates the given bundle \\
+\hline
+\texttt{uninstall {\scriptsize <bundle ID>}} & Uninstalls the given bundle \\
+\hline
+\texttt{bl {\scriptsize [<name>]}} & Lists the installed bundles \\
+\hline
+\texttt{bd {\scriptsize <bundle ID>}} & Prints the details of a bundle \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Service Commands}
+\centering
+\begin{tabular}{r l}
+\texttt{sl {\scriptsize [<specification>]}} & Lists the registered services \\
+\hline
+\texttt{sd {\scriptsize <service ID>}} & Prints the details of a service \\
+\end{tabular}
+\end{block}
+\end{small}
+\end{frame}
+
+
+\begin{frame}{iPOPO Commands}
+\begin{small}
+\begin{block}{Information Commands}
+\centering
+\begin{tabular}{r l}
+\texttt{factories {\scriptsize [<name>]}} & Lists registered component factories \\
+\hline
+\texttt{factory {\scriptsize <name>}} & Prints the details of a factory \\
+\hline
+\texttt{instances {\scriptsize [<name>]}} & Lists components instances \\
+\hline
+\texttt{instance {\scriptsize <name>}} & Prints the details of a component \\
+\hline
+\texttt{waiting {\scriptsize [<name>]}} & Lists the components waiting for an handler \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Instance Commands}
+\centering
+\begin{tabular}{p{.45\textwidth} l}
+\texttt{instantiate {\scriptsize <factory> <name> [<property=value>]}} & Prints the registered services \\
+\hline
+\texttt{kill {\scriptsize <name>}} & Kills a component \\
+\hline
+\texttt{retry {\scriptsize <name> [<property=value>]}} & Retry the validation of a component \\
+\end{tabular}
+\end{block}
+\end{small}
+\end{frame}
+
+\begin{frame}{Shell Ecosystem}
+\begin{exampleblock}{Note}
+All these modules are in the \texttt{pelix.shell} package.
+\end{exampleblock}
+
+\begin{block}{Existing UIs}
+\centering
+\begin{tabular}{rl}
+\texttt{console} & Console (text) UI \\
+\hline
+\texttt{remote} & Access the shell via TCP, e.g. via NetCat \\
+\hline
+\texttt{xmpp} & Access the Shell via XMPP (based on SleekXMPP) \\
+\end{tabular}
+\end{block}
+
+\begin{block}{Command providers}
+\centering
+\begin{tabular}{rl}
+\texttt{configadmin} & Commands to create and update configurations \\
+\hline
+\texttt{eventadmin} & Commands to send/post events \\
+\hline
+\texttt{ipopo} & Commands to manage iPOPO instances \\
+\hline
+\texttt{report} & Generates a JSON report about the framework \\
+\end{tabular}
+\end{block}
+\end{frame}
