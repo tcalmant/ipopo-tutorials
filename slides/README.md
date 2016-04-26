@@ -7,9 +7,11 @@ Contributions are welcome ;)
 ## List of presentations
 
 * java-osgi-ipojo: OSGi concepts, Java implementation, iPOJO concepts and snippets (no iPOPO)
-* pelix-ipopo-concepts: Pelix concepts (vs. OSGi), iPOPO concepts (vs. iPOJO), with basic API description
-* pelix-ipopo-featured: Featured services (basic) description
-* details-bundles: How bundles are handled
-* details-components-handlers: How components are handled, with details about handlers
-* details-remote-services: How remote services are implemented
-* details-shell: How the shell works
+* pelix-ipopo-overview: Pelix concepts (vs. OSGi), iPOPO concepts (vs. iPOJO), with basic API description
+* ipopo-remote-services: How remote services are implemented
+* pelix-shell: How the Pelix shell works
+
+## TODO
+
+* pelix-bundles: How bundles are handled
+* ipopo-components-handlers: How components are handled, with details about handlers
