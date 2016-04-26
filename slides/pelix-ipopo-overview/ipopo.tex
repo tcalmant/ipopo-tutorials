@@ -1,9 +1,11 @@
 \subsection{iPOJO Model}
 
 \begin{frame}{Component Life Cycle}
+\begin{small}
 \begin{exampleblock}{Note}
-Same life cycle as iPOJO Components
+Similar life cycle as in iPOJO, with an \texttt{ERRONEOUS} state if the validation fails.
 \end{exampleblock}
+\end{small}
 
 \centering
 
@@ -29,17 +31,20 @@ Same life cycle as iPOJO Components
            shorten >=2pt,}
 }
 
-\begin{tikzpicture}[node distance=2.5em, auto]
+\begin{tikzpicture}[node distance=2em, auto]
 \node[circle, draw, very thick, fill=yellow!30] (init) {};
 \node[punkt, below=of init] (instantiated) {INSTANTIATED};
-\node[punkt, right=10em of init] (validating) {VALIDATING};
+\node[punkt, right=8em of instantiated] (validating) {VALIDATING};
+\node[punkt, above=of validating] (erroneous) {ERRONEOUS};
 \node[punkt, below=of validating] (valid) {VALID};
 \node[punkt, below=of valid] (invalidating) {INVALIDATING};
 \node[punkt, below=of instantiated] (deleted) {DELETED};
 \node[circle, draw, very thick, fill=black, below=of deleted] (final) {};
 
 \draw[pil] (init.south) to node[auto, swap] {Instantiate} (instantiated.north);
-\draw[pil] (instantiated.east) to node[auto] {Validate} (validating.west);
+\draw[pil] (instantiated.east) to node[auto, swap] {Validate} (validating.west);
+\draw[pil] (validating.north) to node[auto, swap] {<exception>} (erroneous.south);
+\draw[pil] (erroneous.west) to node[auto, swap] {Retry}(instantiated.north east);
 \draw[pil] (validating.south) to node[auto] {} (valid.north);
 \draw[pil] (valid.south) to node[auto] {Invalidate} (invalidating.north);
 \draw[pil] (invalidating.west) to node[auto] {} (instantiated.east);
