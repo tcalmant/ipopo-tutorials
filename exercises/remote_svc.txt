@@ -20,7 +20,7 @@ instantiate pelix.http.service.basic.factory httpd http.port=0
 install pelix-remote-dispatcher-servlet-factory dispatcher-servlet
 
 # Start the multicast discovery
-instantiate pelix-remote-discovery-multicast-factory pelix-discovery-multicast
+instantiate pelix-remote-discovery-multicast-factory multicast-discovery
 
 # Start the JSON-RPC importer and exporter
 instantiate pelix-jsonrpc-exporter-factory jsonrpc-exporter

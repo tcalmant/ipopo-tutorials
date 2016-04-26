@@ -1,0 +1,198 @@
+\PassOptionsToPackage{dvipsnames, svgnames}{xcolor}
+\documentclass[a4paper, 12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{etoolbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{times}
+
+% Define background color
+\colorlet{LightGray}{Gray!15!}
+
+% Syntax coloration (better than listings but requires --shell-escape=1
+\usepackage{minted}
+\usemintedstyle{borland}
+
+\title{Exercise 1: Hands on Pelix Shell and Remote Services}
+\author{Thomas Calmant}
+\date{}
+
+% Counter for questions
+\newcounter{question}
+\newcommand\Question{%
+  \stepcounter{question}%
+  \paragraph{\hspace{2ex} Question \thequestion.}
+}
+
+% Better lists
+\let\tempone\itemize
+\let\temptwo\enditemize
+\renewenvironment{itemize}{\tempone\addtolength{\itemsep}{-.5em}}{\temptwo}
+
+% Note block
+\tcbuselibrary{skins,breakable}
+\newenvironment{noteblock}[1]{%
+    \tcolorbox[beamer,%
+    noparskip,breakable,
+    colback=LightGreen,colframe=DarkGreen,%
+    colbacklower=LimeGreen!75!LightGreen,%
+    title=\textbf{#1}]}%
+    {\endtcolorbox}
+
+\begin{document}
+\maketitle
+
+\section{Setup your environment}
+
+\begin{enumerate}
+\item Ensure you have Python 3.3+ or 2.7 installed
+\item Install iPOPO
+\begin{minted}{bash}
+  pip install --user iPOPO
+\end{minted}
+\item Run a Pelix shell with the following command
+\begin{minted}{bash}
+  python -m pelix.shell
+\end{minted}
+\end{enumerate}
+
+\section{Play with the shell}
+
+\subsection{Basic commands}
+
+\Question In the shell, try the following commands and explain what they do:
+\begin{itemize}
+\item \texttt{bl}
+\item \texttt{sl}
+\item \texttt{bd 1}
+\item \texttt{sl 1}
+\item \texttt{threads}
+\item \texttt{update 2}
+\end{itemize}
+
+\subsection{New command}
+
+\begin{listing}[ht]
+\inputminted[fontsize=\footnotesize, frame=lines, framesep=2mm, baselinestretch=1.2, bgcolor=LightGray, linenos]{python}{../shell_hello.py}
+\caption{\texttt{shell\_hello.py}: Registers a \textit{sample.hello} shell command}
+\label{code:shell_hello}
+\end{listing}
+
+Listing \ref{code:shell_hello} is the code of a bundle which provides an \textit{hello} command in \textit{sample} name space.
+
+\begin{enumerate}
+\item Copy and paste the code in a file called \texttt{shell\_hello.py}
+\item Install the bundle in Pelix, using \texttt{install shell\_hello}
+\item Start it, using the \texttt{start} command
+\item Verify if the \texttt{hello} command is registered, using \texttt{help}
+\item Call the command
+\end{enumerate}
+
+\Question The \texttt{hello} command supports only one argument. Update it so that it accepts a variable number of arguments, like: \texttt{hello Wonderful World}.
+
+\section{The \texttt{hostname} service}
+
+After having imported the \href{https://docs.python.org/3/library/socket.html}{\texttt{socket}} module, it is possible to the host name of your machine using the \href{https://docs.python.org/3/library/socket.html#socket.gethostname}{\texttt{gethostname()}} method.
+
+\Question Create a new bundle, \textit{i.e.} a new Python module, that defines a new component factory with the following constrains:
+\begin{itemize}
+\item The components of this factory must provide a service with the \texttt{ex1.hostname} specification;
+\item A component must instantiated as soon as the factory is loaded;
+\item The components must provide a \texttt{get\_hostname()}, which returns the host name of the local machine.
+\end{itemize}
+
+\Question Install the new bundle and verify that:
+\begin{itemize}
+\item a component has been instantiated;
+\item a service implementing \texttt{ex1.hostname} is registered.
+\end{itemize}
+
+\Question Update the \texttt{shell\_hello} bundle to register an \texttt{hostname} shell command.
+This command must use the \texttt{ex1.hostname} service, provided by the component instantiated with the previous command.
+
+\section{Remote Services}
+
+\Question Update the \texttt{hostname} shell command implementation so that it prints the result of \texttt{get\_hostname()} of all registered \texttt{ex1.hostname} services.
+You should use the \texttt{aggregate} property of the \texttt{@Requires} decorator.
+
+\subsection{Export Property}
+
+To be exported, a service must be associated to an export property.
+The most commonly used is \texttt{service.exported.interfaces}, set to either \texttt{*} (export all service interfaces) or to a list of interfaces allowed to be exported.
+
+\Question Add the export property to the \texttt{ex1.hostname} service, using the \texttt{@Property} decorator.
+
+\subsection{Play with Remote Services}
+
+\begin{noteblock}{Check the access to your peers before trying to call them...}
+Ensure that you are on the same network as your peers before starting remote services components.
+Also ensure that there are no firewall rules on the router and peers which would reject the multicast or the TCP packets.
+
+\vspace{1em}
+If you're alone, simply run a second framework in parallel of the current one, with the same bundles installed.
+\end{noteblock}
+
+\vspace{1em}
+
+Remote Services are handled by a set of bundles which are not installed by default in a Pelix framework.
+You'll have to install:
+
+\begin{center}
+\begin{tabularx}{.95\textwidth}{r X}
+\texttt{\footnotesize pelix.remote.dispatcher} & The dispatcher, handling the exported services \\
+\hline
+\texttt{\footnotesize pelix.remote.registry} & The registry, handling the imported services \\
+\hline
+\texttt{\footnotesize pelix.remote.discovery.multicast} & A discovery service, based on multicast datagrams \\
+\hline
+\texttt{\footnotesize pelix.remote.json\_rpc} & A transport service to call remote methods, \par based on JSON-RPC \\
+\hline
+\texttt{\footnotesize pelix.http.basic} & The Pelix HTTP Service, required by JSON-RPC \\
+\end{tabularx}
+\end{center}
+
+When those bundles are installed, it is necessary to instantiate some components of the factories they provide.
+During this step, it is possible to configure the addresses and ports used by the HTTP service and the discovery services.
+
+Listing \ref{code:remote_svc_install} is a script file that can be executed in the Pelix shell using the \texttt{run} command.
+It installs the remote services bundles and instantiates the required components.
+
+\begin{listing}[!hb]
+\inputminted[fontsize=\footnotesize, frame=lines, framesep=2mm, baselinestretch=1.2, bgcolor=LightGray, linenos]{python}{../remote_svc.txt}
+\caption{\texttt{remote\_svc.txt}: A Pelix Shell script that installs remote services bundles and instantiates the required components}
+\label{code:remote_svc_install}
+\end{listing}
+
+\Question Now that the remote services components are up and running, check with \texttt{sl} if you see some imported services:
+\begin{itemize}
+\item How can you tell that a service has been imported?
+\item Which bundle provides the imported services?
+\end{itemize}
+
+\Question Try your \texttt{hostname} shell command, what happens?
+
+\section{Useful links}
+
+Here are some links to the iPOPO project which can help you during this exercise:
+\begin{itemize}
+\item List of the commands available in the Pelix Shell\\
+\begin{footnotesize}
+\url{https://ipopo.coderxpress.net/wiki/doku.php?id=ipopo:refcards:shell}
+\end{footnotesize}
+
+\item How to use the shell and how to write a command provider:\\
+\begin{footnotesize}
+\url{https://ipopo.coderxpress.net/wiki/doku.php?id=ipopo:tutorials:shell} 
+\end{footnotesize}
+
+\item How to export a service\\
+\begin{footnotesize}
+\url{https://ipopo.coderxpress.net/wiki/doku.php?id=ipopo:tutorials:remote_svc} 
+\end{footnotesize}
+\end{itemize}
+\end{document}
