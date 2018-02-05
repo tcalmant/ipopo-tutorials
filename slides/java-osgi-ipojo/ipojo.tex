@@ -5,9 +5,9 @@
 \begin{tabular}{lp{.7\textwidth}}
 Component & Instance of a \textit{Factory} class\\
 \hline
-Factory & (Annotated) Java class, modified by iPOJO after compilation\\
+Factory & (Annotated) Java class, manipulated by iPOJO after compilation\\
 \hline
-Handler & Manages a component according to information in its Factory\\
+Handler & Manages a component according to information in its Component Factory\\
 \end{tabular}
 \end{block}
 
@@ -69,14 +69,13 @@ Handler & Manages a component according to information in its Factory\\
 
 \subsection{Code Snippets}
 
-\begin{frame}[fragile]{Snippet: Sample Provider}
-\begin{block}{Hello world sample}
+\begin{frame}[fragile]{Hello World sample}
+\begin{block}{Provider component}
 \begin{minted}{java}
 @Component(name="my-provider"}
 @Provides(specification=MyInterface.class)
 @Instantiate(name="my-provider-instance")
 public class MyImplementation implements MyInterface {
-
 	@Requires(optional=true)
 	private LogService logger;
 	
@@ -90,15 +89,14 @@ public class MyImplementation implements MyInterface {
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Snippet: Sample Consumer}
-\begin{block}{Hello world sample}
+\begin{frame}[fragile]{Hello World sample}
+\begin{block}{Consumer component}
 \begin{minted}{java}
 @Component(name="my-consumer"}
 @Instantiate(name="my-consumer-instance")
 public class MyConsumer {
 	@Requires
 	private MyInterface service;
-	
 	@Property(name = "my.name", value = "World")
 	private String name;
 	
@@ -118,8 +116,9 @@ public class MyConsumer {
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Snippet: Result}
-\begin{block}{Hello world sample}
+\begin{frame}[fragile]{Hello World sample}
+\begin{block}{Result:}
+\vspace{1em}
 \begin{minted}{bash}
 $ install file:ipojo.jar
 Bundle ID 5

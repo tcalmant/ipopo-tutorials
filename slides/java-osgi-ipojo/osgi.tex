@@ -66,6 +66,7 @@
 \begin{frame}{OSGi: Concepts}
 \begin{block}{SOA Principles Equivalents}
 \begin{center}
+\begin{small}
 \begin{tabular}{rp{.5\textwidth}}
 Contract & Java Interface\\
 \hline
@@ -73,11 +74,13 @@ Service & Object implementing an Interface\\
 \hline
 Registry & Framework service registry\\
 \end{tabular}
+\end{small}
 \end{center}
 \end{block}
 
 \begin{block}{Concepts}
 \begin{center}
+\begin{small}
 \begin{tabular}{rp{.6\textwidth}}
 Framework & Services \& bundles registry\\
 \hline
@@ -87,6 +90,7 @@ Bundle Context & Link between bundle classes and the framework\\
 \hline
 Service & Object implementing an interface, associated to properties\\
 \end{tabular}
+\end{small}
 \end{center}
 \end{block}
 \end{frame}
@@ -128,15 +132,15 @@ Knopflerfish & Makewave\\
 \begin{tabular}{rp{.6\textwidth}}
 Bundle-SymbolicName & Identifier of the bundle\\
 Bundle-Version & Normalized version number \par (\textit{major.minor.micro-qualifier})\\
-Import-Package & List of required packages, with a version\\
-Export-Package & List of provided packages, with a version\\
+Import-Package & List of required packages, \newline with a version\\
+Export-Package & List of provided packages, \newline with a version\\
 \end{tabular}
 \end{center}
 \end{block}
 
 \begin{block}{Optional Entries}
 \begin{center}
-\begin{tabular}{rp{.6\textwidth}}
+\begin{tabular}{rp{.5\textwidth}}
 Bundle-Name & Human-readable name\\
 Bundle-Description & Long description\\
 Bundle-Vendor & Name of the bundle provider\\
@@ -243,7 +247,6 @@ ServiceRegistration<MyInterface> svcReg = ctxt.registerService(
 
 \begin{block}{Unregister a service}
 \begin{minted}{java}
-// Unregister the service
 svcReg.unregister();
 \end{minted}
 \vspace{-.8em}
@@ -255,7 +258,7 @@ svcReg.unregister();
 \begin{small}
 \begin{block}{Find a Service}
 \begin{minted}{java}
-// Find the first service matching an interface and/or properties
+// Find the first service matching an interface or properties
 svcRef = ctxt.getServiceReference(
 	MyInterface.class.getName(), "(answer=42)");
 \end{minted}
