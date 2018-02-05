@@ -22,40 +22,44 @@ ctxt.install_bundle('pelix.shell.console').start()
 \end{frame}
 
 \begin{frame}{Basic Commands}
-\begin{small}
 \begin{block}{Survival Kit}
 \centering
+\begin{footnotesize}
 \begin{tabular}{r p{.45\textwidth}}
-\texttt{help {\scriptsize [<command>]}} & Shows the help \\
+\texttt{\scriptsize help [<command>]} & Shows the help \\
 \hline
-\texttt{loglevel {\scriptsize [<level>] [<name>]}} & Prints/changes the log level \\
+\texttt{\scriptsize loglevel [<level>] [<name>]} & Prints/changes the log level \\
 \hline
-\texttt{exit} & Quits the shell (and the framework in console UI) \\
+\texttt{\scriptsize exit} & Quits the shell \newline (the framework in console UI) \\
 \hline
-\texttt{threads} & Prints the stack trace of all threads \\
+\texttt{\scriptsize threads} & Prints the stack trace of all threads \\
 \hline
-\texttt{run {\scriptsize <file>}} & Executes the given shell script \\
+\texttt{\scriptsize run <file>} & Executes the given shell script \\
 \end{tabular}
+\end{footnotesize}
 \end{block}
 
 \begin{block}{Session Commands}
 \centering
+\begin{footnotesize}
 \begin{tabular}{r l}
 \texttt{set {\scriptsize [<property=value>]}} & Prints/sets session variables \\
 \hline
 \texttt{unset {\scriptsize <name>}} & Deletes a session variable \\
 \end{tabular}
+\end{footnotesize}
 \end{block}
 
 \begin{block}{Properties Commands}
 \centering
+\begin{footnotesize}
 \begin{tabular}{r l}
 \texttt{properties} & Lists the properties of the framework \\
 \hline
 \texttt{sysprops} & Lists the environment variables \\
 \end{tabular}
+\end{footnotesize}
 \end{block}
-\end{small}
 \end{frame}
 
 
@@ -91,36 +95,39 @@ ctxt.install_bundle('pelix.shell.console').start()
 
 
 \begin{frame}{iPOPO Commands}
-\begin{small}
 \begin{block}{Information Commands}
 \centering
+\begin{small}
 \begin{tabular}{r l}
-\texttt{factories {\scriptsize [<name>]}} & Lists registered component factories \\
+\texttt{\scriptsize factories [<name>]} & Lists registered component factories \\
 \hline
-\texttt{factory {\scriptsize <name>}} & Prints the details of a factory \\
+\texttt{\scriptsize factory <name>} & Prints the details of a factory \\
 \hline
-\texttt{instances {\scriptsize [<name>]}} & Lists components instances \\
+\texttt{\scriptsize instances [<name>]} & Lists components instances \\
 \hline
-\texttt{instance {\scriptsize <name>}} & Prints the details of a component \\
+\texttt{\scriptsize instance <name>} & Prints the details of a component \\
 \hline
-\texttt{waiting {\scriptsize [<name>]}} & Lists the components waiting for an handler \\
+\texttt{\scriptsize waiting [<name>]} & Lists the components waiting for an handler \\
 \end{tabular}
+\end{small}
 \end{block}
 
 \begin{block}{Instance Commands}
 \centering
+\begin{footnotesize}
 \begin{tabular}{p{.45\textwidth} l}
-\texttt{instantiate {\scriptsize <factory> <name> [<property=value>]}} & Prints the registered services \\
+\texttt{\scriptsize instantiate <factory> <name> [<property=value>]} & Prints the registered services \\
 \hline
-\texttt{kill {\scriptsize <name>}} & Kills a component \\
+\texttt{\scriptsize kill <name>} & Kills a component \\
 \hline
-\texttt{retry {\scriptsize <name> [<property=value>]}} & Retry the validation of a component \\
+\texttt{\scriptsize retry <name> [<property=value>]} & Retry the validation of a component \\
 \end{tabular}
+\end{footnotesize}
 \end{block}
-\end{small}
 \end{frame}
 
 \begin{frame}{Shell Ecosystem}
+\begin{small}
 \begin{exampleblock}{Note}
 All these modules are in the \texttt{pelix.shell} package.
 \end{exampleblock}
@@ -148,4 +155,5 @@ All these modules are in the \texttt{pelix.shell} package.
 \texttt{report} & Generates a JSON report about the framework \\
 \end{tabular}
 \end{block}
+\end{small}
 \end{frame}

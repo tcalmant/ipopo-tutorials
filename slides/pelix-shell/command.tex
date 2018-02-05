@@ -6,12 +6,12 @@
 \item Import Shell constants
 \item Create a Component Factory
 \begin{itemize}
-\item Provide the \texttt{pelix.shell.SERVICE\_SHELL\_COMMAND} service
+\item Provide the \texttt{\scriptsize pelix.shell.SERVICE\_SHELL\_COMMAND} service
 \end{itemize}
 \item Implement required methods
 \begin{itemize}
-\item \texttt{get\_namespace()}: Returns the commands name space (\texttt{str})
-\item \texttt{get\_methods()}: Returns a list of couples, associating a command name to a method pointer
+\item \texttt{\scriptsize get\_namespace()}: Returns the commands name space (\texttt{\scriptsize str})
+\item \texttt{\scriptsize get\_methods()}: Returns a list of couples, associating a command name to a method pointer
 \end{itemize}
 \item Implement custom shell commands
 \end{itemize}
@@ -19,12 +19,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Skeleton}
-\begin{scriptsize}
-\begin{exampleblock}{Snippet URL}
-\url{https://coderxpress.net/ipopo/}
-\end{exampleblock}
-
-\begin{block}{Basic code}
+\begin{block}{Basic command provider}
 \begin{minted}{python}
 #!/usr/bin/python
 from pelix.ipopo.decorators import ComponentFactory, Requires, \
@@ -46,5 +41,4 @@ class MyCommands(object):
         session.write_line("Hello, {0} !", name or "World")
 \end{minted}
 \end{block}
-\end{scriptsize}
 \end{frame}

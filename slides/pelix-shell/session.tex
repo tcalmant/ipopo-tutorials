@@ -1,4 +1,5 @@
 \begin{frame}{Concepts}
+\begin{small}
 \begin{block}{Services}
 \centering
 \begin{tabular}{r p{.65\textwidth}}
@@ -15,9 +16,10 @@ Command Service & Provides commands for a namespace \\
 \begin{tabular}{r p{.65\textwidth}}
 Session & Represents a user session, with a storage for variables and a I/O Handler \\
 \hline
-I/O Handler & Hides the communications details, implemented by UIs \\
+I/O Handler & Hides the communications details, \newline implemented by each UI provider \\
 \end{tabular}
 \end{block}
+\end{small}
 \end{frame}
 
 \begin{frame}{Session: API}
@@ -54,19 +56,19 @@ The common methods of the underlying I/O Handler are also available.
 \begin{frame}{I/O Handler: API}
 \begin{small}
 \begin{exampleblock}{Note}
-I/O Handlers are implemented by Shell UIs and are not directly accessible
+I/O Handlers are implemented by Shell UI providers and must be accessed through the session bean
 \end{exampleblock}
 
 \begin{block}{Methods}
 \begin{center}
 \begin{tabular}{rl}
-\texttt{write({\scriptsize data})} & Prints data to the user \\
+\texttt{\scriptsize write(data)} & Prints data to the user \\
 \hline
-\texttt{write\_line({\scriptsize line, *args, **kwargs})} & Prints a line, using \texttt{format()} \\
+\texttt{\scriptsize write\_line(line, *args, **kw)} & Prints a line, using \texttt{format()} \\
 \hline
-\texttt{flush()} & Flushes the output \\
+\texttt{\scriptsize flush()} & Flushes the output \\
 \hline
-\texttt{prompt({\scriptsize [prompt]})} & Request a line for user \\
+\texttt{\scriptsize prompt([prompt])} & Request a line for user \\
 \end{tabular}
 \end{center}
 \end{block}
