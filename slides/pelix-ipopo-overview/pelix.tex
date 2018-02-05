@@ -1,38 +1,43 @@
 \begin{frame}{Pelix: Concepts}
-
 \begin{block}{Services}
 \begin{itemize}
-\item Same concept as in OSGi:\\
-an object implementing interfaces, associated to properties
+\item Same concept as in OSGi:
+\begin{itemize}
+\item object implementing interfaces,
+\item associated to properties
+\end{itemize}
 \item Pelix supports:
 \begin{itemize}
 \item Multiple interfaces services
 \item Service ordering (\texttt{service.ranking})
 \item Service filtering (with LDAP filters)
 \end{itemize}
-\item \texttt{ServiceRegistration} vs. \texttt{ServiceReference}
+\item \texttt{ServiceRegistration} and its \texttt{ServiceReference}
+\item Support for Service Factory, Service Prototype Factory
 \end{itemize}
 \end{block}
+\end{frame}
 
+\begin{frame}{Pelix: Concepts}
 \begin{block}{Bundles}
 \begin{itemize}
-\item Bundle = single Python module
+\item Bundle $\Leftrightarrow$ single Python module
 \begin{itemize}
 \item Standard \texttt{.py}/\texttt{.pyc}/\texttt{.pyo} file
-\item Native modules (\texttt{.pyd})
+\item Native module (\texttt{.pyd})
 \end{itemize}
 \item Support of the Bundle Activator
-\item \texttt{Bundle} vs. \texttt{BundleContext}
+\begin{itemize}
+\item Allows a life cycle for the module
+\item Standard bundles can be updated at runtime
+\end{itemize}
+\item \texttt{Bundle} and its \texttt{BundleContext}
 \end{itemize}
 \end{block}
 \end{frame}
 
 
 \begin{frame}{Pelix Bundle Life Cycle}
-\begin{exampleblock}{Note}
-In Pelix, \texttt{INSTALLED} is just a step state.
-\end{exampleblock}
-
 \centering
 \tikzset{
     %Define standard arrow tip
@@ -71,9 +76,13 @@ In Pelix, \texttt{INSTALLED} is just a step state.
 \draw[pil] (active.south) to node[auto] {Stop} (stopping.north);
 \draw[pil] (stopping.west) to node[auto] {} (resolved.east);
 \draw[pil] (resolved.south) to node[auto, swap] {Uninstall} (uninstalled.north);
-\draw[pil, bend right=35] (resolved.west) to node[auto] {} (uninstalled.west);
+%\draw[pil, bend right=35] (resolved.west) to node[auto] {} (uninstalled.west);
 \draw[pil] (uninstalled.south) to node[auto] {} (final.north);
 \end{tikzpicture}
+
+\begin{exampleblock}{Note}
+In Pelix, \texttt{INSTALLED} is just a step state.
+\end{exampleblock}
 \end{frame}
 
 
@@ -82,15 +91,11 @@ In Pelix, \texttt{INSTALLED} is just a step state.
 \begin{frame}[fragile]{Pelix API: Framework life cycle}
 \begin{block}{Create a framework}
 \begin{minted}{python}
-from pelix.framework import FrameworkFactory, create_framework
+from pelix.framework import create_framework
 
-# With FrameworkFactory
-framework = FrameworkFactory.get_framework({"foo": "bar"})
-framework.get_bundle_context().install_bundle('pelix.ipopo.core')
-framework.start()
-
-# With create_framework
-framework = create_framework(['pelix.ipopo.core'], {"foo": "bar"})
+framework = create_framework(
+	['pelix.ipopo.core'],
+	{"foo": "bar"})
 framework.start()
 \end{minted}
 \end{block}
@@ -101,7 +106,7 @@ framework.start()
 framework.stop()
 
 # Delete it
-FrameworkFactory.delete_framework(framework)
+framework.delete()
 framework = None
 \end{minted}
 \end{block}
@@ -109,57 +114,44 @@ framework = None
 
 \begin{frame}[fragile]{Pelix API: Services}
 \begin{block}{Register a service}
-\vspace{-.5em}
-\begin{columns}
-\begin{column}[b]{.45\textwidth}
 \begin{minted}{python}
 # Service object
 service = MyImplementation()
 
 # Register the service
-svc_reg = ctxt.register_service(
-    "my.interface", service,
-    {"answer": 42}
+# context is the BundleContext
+svc_reg = context.register_service(
+	"my.interface", service,
+	{"answer": 42}
 \end{minted}
-\end{column}
-
-\begin{column}{.5\textwidth}
-\begin{minted}{java}
-// Instantiate the service object
-MyInterface service = 
-	new MyImplementation();
-
-// Set up properties
-Hashtable properties =
-		new Hashtable();
-properties.put("answer", 42);
-
-// Register the service
-ServiceRegistration<?> svcReg = 
-  ctxt.registerService(
-    MyInterface.class, service,
-    properties);
-\end{minted}
-\end{column}
-\end{columns}
 \end{block}
 
 \begin{block}{Unregister a service}
-\vspace{-.5em}
-\begin{columns}
-\begin{column}{.5\textwidth}
 \begin{minted}{python}
-# Unregister the service
-svc_reg.unregister();
+svc_reg.unregister()
 \end{minted}
-\end{column}
+\end{block}
+\end{frame}
 
-\begin{column}{.5\textwidth}
+\begin{frame}[fragile]{Register a service (in Java)}
+\begin{block}{Register a service}
 \begin{minted}{java}
-// Unregister the service
+// Instantiate the service object
+MyInterface service = new MyImplementation();
+
+// Set up properties
+Hashtable properties = new Hashtable();
+properties.put("answer", 42);
+
+// Register the service
+ServiceRegistration<?> svcReg = context.registerService(
+	MyInterface.class, service, properties);
+\end{minted}
+\end{block}
+
+\begin{block}{Unregister a service}
+\begin{minted}{java}
 svcReg.unregister();
 \end{minted}
-\end{column}
-\end{columns}
 \end{block}
 \end{frame}

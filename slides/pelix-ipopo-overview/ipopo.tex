@@ -1,14 +1,7 @@
 \subsection{iPOJO Model}
 
 \begin{frame}{Component Life Cycle}
-\begin{small}
-\begin{exampleblock}{Note}
-Similar life cycle as in iPOJO, with an \texttt{ERRONEOUS} state if the validation fails.
-\end{exampleblock}
-\end{small}
-
 \centering
-
 \vspace{1em}
 
 \tikzset{
@@ -51,31 +44,42 @@ Similar life cycle as in iPOJO, with an \texttt{ERRONEOUS} state if the validati
 \draw[pil] (instantiated.south) to node[auto, swap] {Remove} (deleted.north);
 \draw[pil] (deleted.south) to node[auto] {} (final.north);
 \end{tikzpicture}
+
+\begin{small}
+\begin{exampleblock}{Note}
+Similar life cycle as in iPOJO, with an additional \texttt{ERRONEOUS} state if the validation fails.
+\end{exampleblock}
+\end{small}
 \end{frame}
 
 
 \subsection{Code Snippets}
 
-\begin{frame}[fragile]{Snippet: Sample Provider}
-\begin{block}{Hello world sample}
+\begin{frame}[fragile]{Hello World sample}
+\begin{block}{Provider component}
 \begin{minted}{python}
 @ComponentFactory("my-provider"}
 @Provides("my-interface")
-@Requires("logger", "logger.service", optional=True)
+@Requires("logger", "pelix.log")
 @Instantiate("my-provider-instance")
 class MyImplementation:
     def __init__(self):
+    	# Here, all injected members should be declared
+    	# in order to respect Python guidelines
         self.logger = None
 
     def hello(self, name):
+        # This method is available to all
+        # "my-interface" consumers
         print("Hello,", name, "!")
-        self.logger.log(logging.LOG_DEBUG, "Said hello to %s", name)
+        self.logger.log(logging.LOG_DEBUG,
+            "Said hello to {}".format(name))
 \end{minted}
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Snippet: Sample Consumer}
-\begin{block}{Hello world sample}
+\begin{frame}[fragile]{Hello World sample}
+\begin{block}{Consumer component}
 \begin{minted}{python}
 @ComponentFactory(name="my-consumer"}
 @Requires("service", "my-interface")
@@ -95,6 +99,27 @@ class MyConsumer:
     def invalidated(self):
         print("Consumer invalidated!")
         self.service.hello("the end")
+\end{minted}
+\end{block}
+\end{frame}
+
+
+\begin{frame}[fragile]{Hello World sample}
+\begin{block}{Result}
+\begin{minted}{bash}
+** Pelix Shell prompt **
+$ install hello.provider
+Bundle ID: 12
+$ start 12
+Starting bundle 12 (hello.provider)...
+$ install hello.consumer
+Bundle ID: 13
+$ start 13
+Starting bundle 13 (hello.consumer)...
+Hello, World !
+$ stop 12
+Stopping bundle 12 (hello.provider)...
+Hello, the end !
 \end{minted}
 \end{block}
 \end{frame}

@@ -1,23 +1,31 @@
 \begin{frame}{Batteries Included}
 \begin{block}{OSGi Specified Services}
+\begin{small}
 \begin{tabular}{rl}
 \texttt{EventAdmin} & Publish-Subscribe local communication \\
 \texttt{ConfigurationAdmin} & Configuration and persistence handling \\
 \texttt{FileInstall} & File-system watcher \\
 \end{tabular}
+\end{small}
 \end{block}
 
 \begin{block}{OSGi Inspired Services}
+\begin{small}
 \begin{tabular}{rl}
+Log Service & A logger with extensible outputs \\
 HTTP Service & HTTP Server, supporting servlet-like API \\
-Remote Service & Support of OSGi RS properties \\
+Remote Services & Support of OSGi RS properties \\
 \end{tabular}
+\end{small}
 \end{block}
 
 \begin{block}{Pelix Specific Services}
+\begin{small}
 \begin{tabular}{rl}
-Shell Service & Parser, dispatcher and UI services \\
-MQTT Service & Multi-server MQTT client \\
+Shell & Parser, dispatcher and UI services \\
+Initial Configuration & Sets up the framework from a JSON file \\
+MQTT & Multi-server MQTT client \\
 \end{tabular}
+\end{small}
 \end{block}
 \end{frame}

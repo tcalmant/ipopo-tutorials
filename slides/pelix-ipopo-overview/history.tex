@@ -1,17 +1,21 @@
-\begin{frame}{iPOPO Project History}
+\begin{frame}{iPOPO Project Genesis}
 \begin{block}{Parent project: Cohorte}
 \begin{itemize}
-\item Development \& Runtime Framework for seamless isolation of OSGi bundles and components
+\item Framework for seamless isolation of OSGi bundles and components
 \item Target: OSGi applications
-\item Implementation languages: Python (main), Java
+\item Implementation languages:
+\begin{itemize}
+\item Initially in pure Java (OSGi-only framework)
+\item Then in Python and Java
+\end{itemize}
 \end{itemize}
 \end{block}
 
 \begin{block}{Requirements}
 \begin{itemize}
-\item Access to low-level methods (\texttt{getpid()}, \texttt{setuid()}, \ldots)
-\item Real concept of processes
-\item Close to the APIs and concepts known by OSGi/iPOJO developers
+\item Access to low-level methods (\texttt{getpid()}, \texttt{setuid()}\ldots)
+\item Real concept of processes (no Java abstraction)
+\item APIs and concepts close to OSGi/iPOJO ones
 \end{itemize}
 \end{block}
 \end{frame}
@@ -32,7 +36,7 @@
 \end{itemize}
 \end{column}
 
-\begin{column}{.5\textwidth}
+\begin{column}{.4\textwidth}
 \vspace{-1em}
 \begin{center}
 \textbf{iPOPO}
@@ -40,7 +44,7 @@
 \end{center}
 \begin{itemize}
 \item iPOJO-like concepts
-\item Factory class manipulation \\ (by decorators)
+\item Class manipulation \\ (at loading time)
 \end{itemize}
 \end{column}
 \end{columns}
@@ -48,9 +52,9 @@
 
 \begin{block}{Required Features}
 \begin{columns}
-\begin{column}{.65\textwidth}
+\begin{column}{.5\textwidth}
 \begin{itemize}
-\item At-runtime bundle installation and update
+\item Live bundle update
 \item No external dependencies
 \item Low memory usage
 \end{itemize}
