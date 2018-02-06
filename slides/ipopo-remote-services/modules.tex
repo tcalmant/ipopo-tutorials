@@ -25,8 +25,8 @@ All those modules are in the \texttt{pelix.remote.discovery} package.
 \end{exampleblock}
 
 \begin{block}{Standard library-based modules}
-\begin{tabular}{rp{.8\textwidth}}
-\texttt{multicast} & Multicast heartbeats (discovery and notifications) \par Uses HTTP \& JSON to retrieve endpoint descriptions \\
+\begin{tabular}{rp{.7\textwidth}}
+\texttt{multicast} & Multicast heartbeats \par (discovery and notifications) \par Uses HTTP \& JSON to retrieve endpoints \\
 \end{tabular}
 \end{block}
 
@@ -59,7 +59,7 @@ Those modules can be found in the \texttt{pelix.remote} and \texttt{pelix.remote
 \begin{tabular}{rp{.7\textwidth}}
 \texttt{json\_rpc} & JSON-RPC import and export endpoints \par Depends on \texttt{jsonrpclib-pelix} \\
 \hline
-\texttt{jabsorb\_rpc} & JSON-RPC extension, with Java types information \par Depends on \texttt{jsonrpclib-pelix} \\
+\texttt{jabsorb\_rpc} & JSON-RPC extension, with Java types hints \par Depends on \texttt{jsonrpclib-pelix} \\
 \hline
 \texttt{mqtt\_rpc} & Minimalist JSON-RPC over MQTT \par Depends on \texttt{paho-mqtt} \\
 \end{tabular}

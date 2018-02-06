@@ -3,30 +3,57 @@
 \includegraphics[height=.8\textheight]{../imgs/rs_arch}
 \end{frame}
 
-\begin{frame}{Remote Services Services}
+\begin{frame}{Remote Services: Public Services}
+\begin{small}
 \begin{exampleblock}{Note}
 All services names are declared in \texttt{pelix.remote}
 \end{exampleblock}
 
 \begin{block}{Core Services}
-\begin{small}
-\begin{tabular}{rp{.55\textwidth}}
-\texttt{\scriptsize SERVICE\_DISPATCHER} & Read-only access to the list of export endpoints \\
-\texttt{\scriptsize SERVICE\_DISPATCHER\_SERVLET} & Utility methods for HTTP-based discovery \\
-\texttt{\scriptsize SERVICE\_REGISTRY} & Write-only access to the list of import endpoints \\
-\end{tabular}
-\end{small}
+\begin{itemize}
+\item[] \texttt{SERVICE\_DISPATCHER}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Read-only access to the list of export endpoints
+\end{itemize}
+\item[] \texttt{SERVICE\_DISPATCHER\_SERVLET}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Utility methods for HTTP-based discovery
+\end{itemize}
+\item[] \texttt{SERVICE\_REGISTRY}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Write-only access to the list of import endpoints
+\end{itemize}
+\end{itemize}
 \end{block}
+\end{small}
+\end{frame}
+
+\begin{frame}{Remote Services: Providers Services}
+\begin{small}
+\begin{exampleblock}{Note}
+All services names are declared in \texttt{pelix.remote}
+\end{exampleblock}
 
 \begin{block}{Import/Export Services}
-\begin{small}
-\begin{tabular}{rp{.45\textwidth}}
-\texttt{\scriptsize SERVICE\_EXPORT\_PROVIDER} & Notified by the dispatcher to create export endpoints \\
-\texttt{\scriptsize SERVICE\_EXPORT\_ENDPOINT\_LISTENER} & Notified of new export endpoints \\
-\texttt{\scriptsize SERVICE\_IMPORT\_ENDPOINT\_LISTENER} & Notified of new import endpoints \\
-\end{tabular}
-\end{small}
+\begin{itemize}
+\item[] \texttt{SERVICE\_EXPORT\_PROVIDER}
+\begin{itemize}
+\item[] Notified by the dispatcher to create export endpoints
+\end{itemize}
+\item[] \texttt{SERVICE\_EXPORT\_ENDPOINT\_LISTENER}
+\begin{itemize}
+\item[] Notified of new export endpoints
+\end{itemize}
+\item[] \texttt{SERVICE\_IMPORT\_ENDPOINT\_LISTENER}
+\begin{itemize}
+\item[] Notified of new import endpoints
+\end{itemize}
+\end{itemize}
 \end{block}
+\end{small}
 \end{frame}
 
 \begin{frame}{Endpoint creation sequence}
@@ -53,11 +80,18 @@ The \texttt{Dispatcher} is notified of a service to be exported (after its regis
 \end{block}
 
 \begin{block}{Export properties}
-\begin{tabular}{rl}
-\texttt{\small service.exported.interfaces} & List of exported interfaces \\
-\hline
-\texttt{\small service.exported.configs} & List of allowed export protocols \\
-\end{tabular}
+\begin{itemize}
+\item[] \texttt{\small service.exported.interfaces}
+\begin{itemize}
+\vspace{-.2em}
+\item[] List of exported interfaces
+\end{itemize}
+\item[] \texttt{\small service.exported.configs}
+\begin{itemize}
+\vspace{-.2em}
+\item[] List of allowed export protocols
+\end{itemize}
+\end{itemize}
 \end{block}
 \end{frame}
 
@@ -70,24 +104,39 @@ The \texttt{Dispatcher} is notified of a service to be exported (after its regis
 \item Each import service can register a proxy as a local service, with import properties
 \end{enumerate}
 \end{block}
+\end{frame}
 
+\begin{frame}{How is a service imported?}
 \begin{block}{Imported service properties}
-\begin{tabular}{rl}
-\texttt{\small service.imported.interfaces} & List of exported interfaces \\
-\hline
-\texttt{\small service.imported.configs} & List of allowed export protocols \\
-\hline
-\texttt{\small endpoint.framework.uuid} & UUID of the host framework \\
-\hline
-\texttt{\small endpoint.service.id} & Service ID in the host framework \\
-\end{tabular}
+\begin{itemize}
+\item[] \texttt{\small service.imported.interfaces}
+\begin{itemize}
+\vspace{-.2em}
+\item[] List of exported interfaces
+\end{itemize}
+\item[] \texttt{\small service.imported.configs}
+\begin{itemize}
+\vspace{-.2em}
+\item[] List of allowed export protocols
+\end{itemize}
+\item[] \texttt{\small endpoint.framework.uuid}
+\begin{itemize}
+\vspace{-.2em}
+\item[] UUID of the host framework
+\end{itemize}
+\item[] \texttt{\small endpoint.service.id}
+\begin{itemize}
+\vspace{-.2em}
+\item[] Service ID in the host framework
+\end{itemize}
+\end{itemize}
 \end{block}
 \end{frame}
 
 
 \begin{frame}{Supported protocols}
 \begin{exampleblock}{Java compatibility}
-A Java implementation of iPOPO Remote Services is available as the \href{https://github.com/isandlaTech/cohorte-remote-services}{Cohorte Remote Services} project.
+A Java implementation of iPOPO Remote Services is available as the \href{https://github.com/cohorte/cohorte-remote-services}{Cohorte Remote Services} project.
 \end{exampleblock}
 
 \begin{small}
@@ -97,8 +146,8 @@ A Java implementation of iPOPO Remote Services is available as the \href{https:/
 \centering
 \begin{tabular}{ll}
 \textbf{Protocol} & \textbf{Specification}\\
-Multicast & iPOPO specific\\
-MQTT & iPOPO specific\\
+Multicast & iPOPO\\
+MQTT & iPOPO\\
 ZeroConf & Standard\\
 \end{tabular}
 \end{block}
@@ -110,8 +159,8 @@ ZeroConf & Standard\\
 \textbf{Protocol} & \textbf{Specification}\\
 XML-RPC & Standard\\
 JSON-RPC & Standard\\
-Jabsorb-RPC & from the Jabsorb project\\
-MQTT-RPC & iPOPO Specific\\
+Jabsorb-RPC & \href{https://code.google.com/archive/p/jabsorb/}{Jabsorb} project\\
+MQTT-RPC & iPOPO \\
 \end{tabular}
 \end{block}
 \end{columns}

@@ -10,11 +10,18 @@ It then keeps track of the \texttt{ExportEndpoint} created by the exporters.
 
 \begin{block}{Public methods}
 \begin{small}
-\begin{tabular}{p{13em} p{.5\textwidth}}
-\texttt{get\_endpoint(uid)} & Returns the \texttt{ExportEndpoint} associated to the given UID \\
-\hline
-\texttt{get\_endpoints( kind=None, name=None)} & Retrieves all \texttt{ExportEndpoint} matching the given kind and/or name \\
-\end{tabular}
+\begin{itemize}
+\item[] \texttt{get\_endpoint(uid)}
+\begin{itemize}
+\vspace{-.2em}
+\item[] Returns the \texttt{ExportEndpoint} associated to the given UID
+\end{itemize}
+\item[] \texttt{get\_endpoints(kind=None, name=None)}
+\begin{itemize}
+\vspace{-.2em}
+\item[] Retrieves all \texttt{ExportEndpoint} matching the given kind and/or name
+\end{itemize}
+\end{itemize}
 \end{small}
 \end{block}
 \end{frame}
@@ -22,8 +29,8 @@ It then keeps track of the \texttt{ExportEndpoint} created by the exporters.
 \begin{frame}{API: \texttt{SERVICE\_DISPATCHER\_SERVLET}}
 \begin{block}{Description}
 \begin{small}
-Service implemented by \texttt{RegistryServlet} in the \texttt{dispatcher} module.
-It allows to grab the description of exported endpoints in JSON format \textit{via} a GET request.
+Service implemented by \texttt{RegistryServlet} in the \texttt{dispatcher} module, providing a servlet
+giving the description of exported endpoints in JSON format.
 It also supports the update of an imported endpoint \textit{via} a POST request.
 The service can be used internally to send those requests.
 \end{small}
@@ -31,13 +38,26 @@ The service can be used internally to send those requests.
 
 \begin{block}{Public methods}
 \begin{small}
-\begin{tabular}{p{.3\textwidth} p{.6\textwidth}}
-\texttt{get\_access()} & Returns the HTTP port and path to access the servlet \\
-\hline
-\texttt{grab\_endpoint( host, port, path, uid)} & Get the description of an exported endpoint from a framework\\
-\hline
-\texttt{send\_discoverted( host, port, path)} & Sends a \textit{discovered} POST request to a framework \\
-\end{tabular}
+\begin{itemize}
+\vspace{-.1em}
+\item[] \texttt{get\_access()}
+\begin{itemize}
+\vspace{-.4em}
+\item[] Returns the HTTP port and path to access the servlet
+\end{itemize}
+\vspace{-.1em}
+\item[] \texttt{grab\_endpoint(host, port, path, uid)}
+\begin{itemize}
+\vspace{-.4em}
+\item[] Get the description of an exported endpoint from a framework
+\end{itemize}
+\vspace{-.1em}
+\item[] \texttt{send\_discoverted(host, port, path)}
+\begin{itemize}
+\vspace{-.4em}
+\item[] Sends a \textit{discovered} POST request to a framework
+\end{itemize}
+\end{itemize}
 \end{small}
 \end{block}
 \end{frame}
@@ -45,23 +65,40 @@ The service can be used internally to send those requests.
 \begin{frame}{API: \texttt{SERVICE\_REGISTRY}}
 \begin{block}{Description}
 \begin{small}
-Service implemented by \texttt{ImportsRegistry} in the \texttt{registry} module.
-Keeps track of all discovered exported endpoints as \texttt{ImportedEndpoint}s, after having been notified by discovery services.
-Notify importers of known endpoints and let them decide whether to import the service or not.
+Service implemented by \texttt{ImportsRegistry} in \texttt{registry},
+keeping track of all discovered exported endpoints as \texttt{ImportedEndpoint}, after having been notified by discovery services.
+Notifies importers of known endpoints and let them decide whether to import them or not.
 \end{small}
 \end{block}
 
 \begin{block}{Public methods}
 \begin{small}
-\begin{tabular}{lp{.55\textwidth}}
-\texttt{add(endpoint)} & Registers a new \texttt{ImportEndpoint} \\
-\hline
-\texttt{update(uid, new\_props)} & Updates the properties of a known \texttt{ImportEndpoint}\\
-\hline
-\texttt{remove(uid)} & Unregisters a known \texttt{ImportEndpoint}\\
-\hline
-\texttt{lost\_framework(uid)} & Unregisters all \texttt{ImportEndpoint} associated to a framework\\
-\end{tabular}
+\begin{itemize}
+\vspace{-.2em}
+\item[] \texttt{add(endpoint)}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Registers a new \texttt{ImportEndpoint}
+\end{itemize}
+\vspace{-.2em}
+\item[] \texttt{update(uid, new\_props)}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Updates the properties of a known \texttt{ImportEndpoint}
+\end{itemize}
+\vspace{-.2em}
+\item[] \texttt{remove(uid)}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Unregisters a known \texttt{ImportEndpoint}
+\end{itemize}
+\vspace{-.2em}
+\item[] \texttt{lost\_framework(uid)}
+\begin{itemize}
+\vspace{-.5em}
+\item[] Unregisters all endpoints associated to a framework
+\end{itemize}
+\end{itemize}
 \end{small}
 \end{block}
 \end{frame}
