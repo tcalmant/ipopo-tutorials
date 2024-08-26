@@ -112,17 +112,44 @@ framework = None
 \end{block}
 \end{frame}
 
+
 \begin{frame}[fragile]{Pelix API: Services}
+\begin{block}{Define a service specification}
+\begin{minted}{python}
+from typing import Protocol
+from pelix.constants import Specification
+
+@Specification("hello.service")
+class MyInterface(Protocol):
+   def hello(self, name: str) -> None:
+   """
+   Prints hello on the console
+   :param name: Name to hail
+   """
+   ...
+\end{minted}
+\end{block}
+
+\begin{block}{Implement the specification}
+\begin{minted}{python}
+class MyImplementation(MyInterface):
+   def hello(self, name):
+       print("Hello, world")
+\end{minted}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Pelix API: Services (named specification)}
 \begin{block}{Register a service}
 \begin{minted}{python}
-# Service object
+# Service instance
 service = MyImplementation()
 
 # Register the service
 # context is the BundleContext
 svc_reg = context.register_service(
-	"my.interface", service,
-	{"answer": 42}
+    MyInterface, service, {"answer": 42}
+)
 \end{minted}
 \end{block}
 

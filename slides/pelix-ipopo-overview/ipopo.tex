@@ -58,22 +58,22 @@ Similar life cycle as in iPOJO, with an additional \texttt{ERRONEOUS} state if t
 \begin{frame}[fragile]{Hello World sample}
 \begin{block}{Provider component}
 \begin{minted}{python}
-@ComponentFactory("my-provider"}
-@Provides("my-interface")
-@Requires("logger", "pelix.log")
+@ComponentFactory("my-provider")
+@Provides(MyInterface)
+@Requires("logger", pelix.misc.LogService)
 @Instantiate("my-provider-instance")
-class MyImplementation:
-    def __init__(self):
-    	# Here, all injected members should be declared
-    	# in order to respect Python guidelines
-        self.logger = None
+class MyImplementation(MyInterface):
+    # Here, all injected members should be declared
+    # in order to give them the right type
+    logger: pelix.misc.LogService
 
     def hello(self, name):
         # This method is available to all
         # "my-interface" consumers
         print("Hello,", name, "!")
-        self.logger.log(logging.LOG_DEBUG,
-            "Said hello to {}".format(name))
+        self.logger.log(
+            logging.LOG_DEBUG, f"Said hello to {name}"
+        )
 \end{minted}
 \end{block}
 \end{frame}
@@ -81,20 +81,19 @@ class MyImplementation:
 \begin{frame}[fragile]{Hello World sample}
 \begin{block}{Consumer component}
 \begin{minted}{python}
-@ComponentFactory(name="my-consumer"}
-@Requires("service", "my-interface")
+@ComponentFactory(name="my-consumer")
+@Requires("service", MyInterface)
 @Property("name", "my.name", "World")
 @Instantiate("my-consumer-instance")
 class MyConsumer:
-    def __init__(self):
-        self.service = None
-        self.name = None
+    service: MyInterface
+    name: str | None
 
     @Validate
     def validated(self):
         print("Consumer validated!")
         self.service.hello(name)
-	
+
     @Invalidate
     def invalidated(self):
         print("Consumer invalidated!")
