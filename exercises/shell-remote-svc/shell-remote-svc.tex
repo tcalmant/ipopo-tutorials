@@ -1,7 +1,7 @@
 \PassOptionsToPackage{dvipsnames, svgnames}{xcolor}
 \documentclass[a4paper, 12pt]{article}
 \usepackage[english]{babel}
-\usepackage[utf8]{inputenc} 
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[margin=2cm]{geometry}
 \usepackage{etoolbox}
@@ -50,7 +50,7 @@
 \section{Setup your environment}
 
 \begin{enumerate}
-\item Ensure you have Python 3.3+ or 2.7 installed
+\item Ensure you have Python 3.10+ installed
 \item Install iPOPO
 \begin{minted}{bash}
   pip install --user iPOPO
@@ -86,7 +86,7 @@
 Listing \ref{code:shell_hello} is the code of a bundle which provides an \textit{hello} command in \textit{sample} name space.
 
 \begin{enumerate}
-\item Copy and paste the code in a file called \texttt{shell\_hello.py}
+\item Copy and paste the code in a file named \texttt{shell\_hello.py}
 \item Install the bundle in Pelix, using \texttt{install shell\_hello}
 \item Start it, using the \texttt{start} command
 \item Verify if the \texttt{hello} command is registered, using \texttt{help}
@@ -182,17 +182,17 @@ Here are some links to the iPOPO project which can help you during this exercise
 \begin{itemize}
 \item List of the commands available in the Pelix Shell\\
 \begin{footnotesize}
-\url{https://ipopo.coderxpress.net/wiki/doku.php?id=ipopo:refcards:shell}
+\url{https://ipopo.readthedocs.io/en/3.0.0/quickstart.html#play-with-the-shell}
 \end{footnotesize}
 
 \item How to use the shell and how to write a command provider:\\
 \begin{footnotesize}
-\url{https://ipopo.coderxpress.net/wiki/doku.php?id=ipopo:tutorials:shell} 
+\url{https://ipopo.readthedocs.io/en/3.0.0/refcards/shell.html}
 \end{footnotesize}
 
 \item How to export a service\\
 \begin{footnotesize}
-\url{https://ipopo.coderxpress.net/wiki/doku.php?id=ipopo:tutorials:remote_svc} 
+\url{https://ipopo.readthedocs.io/en/3.0.0/refcards/remote_services.html}
 \end{footnotesize}
 \end{itemize}
 \end{document}

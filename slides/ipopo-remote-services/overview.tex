@@ -11,17 +11,17 @@ All services names are declared in \texttt{pelix.remote}
 
 \begin{block}{Core Services}
 \begin{itemize}
-\item[] \texttt{SERVICE\_DISPATCHER}
+\item[] \texttt{RemoteServiceDispatcher}
 \begin{itemize}
 \vspace{-.5em}
 \item[] Read-only access to the list of export endpoints
 \end{itemize}
-\item[] \texttt{SERVICE\_DISPATCHER\_SERVLET}
+\item[] \texttt{RemoteServiceDispatcherServlet}
 \begin{itemize}
 \vspace{-.5em}
 \item[] Utility methods for HTTP-based discovery
 \end{itemize}
-\item[] \texttt{SERVICE\_REGISTRY}
+\item[] \texttt{RemoteServiceRegistry}
 \begin{itemize}
 \vspace{-.5em}
 \item[] Write-only access to the list of import endpoints
@@ -39,15 +39,15 @@ All services names are declared in \texttt{pelix.remote}
 
 \begin{block}{Import/Export Services}
 \begin{itemize}
-\item[] \texttt{SERVICE\_EXPORT\_PROVIDER}
+\item[] \texttt{RemoteServiceExportProvider}
 \begin{itemize}
 \item[] Notified by the dispatcher to create export endpoints
 \end{itemize}
-\item[] \texttt{SERVICE\_EXPORT\_ENDPOINT\_LISTENER}
+\item[] \texttt{RemoteServiceExportEndpointListener}
 \begin{itemize}
 \item[] Notified of new export endpoints
 \end{itemize}
-\item[] \texttt{SERVICE\_IMPORT\_ENDPOINT\_LISTENER}
+\item[] \texttt{RemoteServiceImportEndpointListener}
 \begin{itemize}
 \item[] Notified of new import endpoints
 \end{itemize}

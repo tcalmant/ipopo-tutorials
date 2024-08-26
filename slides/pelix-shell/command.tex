@@ -6,7 +6,7 @@
 \item Import Shell constants
 \item Create a Component Factory
 \begin{itemize}
-\item Provide the \texttt{\scriptsize pelix.shell.SERVICE\_SHELL\_COMMAND} service
+\item Provide the \texttt{\scriptsize pelix.shell.ShellCommandsProvider} service
 \end{itemize}
 \item Implement required methods
 \begin{itemize}
@@ -24,21 +24,22 @@
 #!/usr/bin/python
 from pelix.ipopo.decorators import ComponentFactory, Requires, \
     Provides, Instantiate
-import pelix.shell
+from pelix.shell import ShellCommandsProvider, ShellSession
 
 @ComponentFactory("my-shell-commands-factory")
-@Provides(pelix.shell.SERVICE_SHELL_COMMAND)
+@Provides(ShellCommandsProvider)
 @Instantiate("my-shell-commands")
-class MyCommands(object):
+class MyCommands(ShellCommandsProvider):
     def get_namespace(self):
         return "sample"
 
     def get_methods(self):
         return [("hello", self.say_hello),]
 
-    def say_hello(self, session, name=None):
+    def say_hello(self, session: ShellSession,
+            name: str|None=None) -> None:
         """ Command help """
-        session.write_line("Hello, {0} !", name or "World")
+        session.write_line(f"Hello, {name or 'World'} !")
 \end{minted}
 \end{block}
 \end{frame}
